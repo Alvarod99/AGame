@@ -6,6 +6,11 @@
     <string name="Nombre">Nombre</string>
     <string name="Apellido">Apellido</string>
     <string name="registrarse">Registrarse</string>
+    <string name="perfil">Perfil</string>
+    <string name="hoy">Hoy</string>
+    <string name="partidos">Partidos</string>
+    <string name="noticias">Noticias</string>
+    <string name="iniciar_sesion">Iniciar sesión</string>
 
 
 </resources>

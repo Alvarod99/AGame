@@ -57,6 +57,8 @@ public class LoginActivity extends AppCompatActivity {
                     finish();
                     startActivity(new Intent(LoginActivity.this,MainActivity.class));
                     Toast.makeText(LoginActivity.this,"Bienvenido",Toast.LENGTH_SHORT).show();
+                    Intent j = new Intent(LoginActivity.this, MenuActivity.class);
+                    startActivity(j);
                 }
                 else{
                     Toast.makeText(LoginActivity.this, "Ha ocurrido un problema", Toast.LENGTH_LONG).show();
@@ -72,9 +74,5 @@ public class LoginActivity extends AppCompatActivity {
     public void Registrarse(View view){
         Intent i = new Intent(this,Registrarse.class);
         startActivity(i);
-    }
-    public void Menu(View view){
-        Intent j = new Intent(this, MenuActivity.class);
-        startActivity(j);
     }
 }

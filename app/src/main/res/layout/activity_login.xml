@@ -24,7 +24,7 @@
         android:layout_marginTop="20dp"
         android:backgroundTint="#FF9933"
         android:onClick="Menu"
-        android:text="Iniciar sesión"
+        android:text="@string/iniciar_sesion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Contraseña" />

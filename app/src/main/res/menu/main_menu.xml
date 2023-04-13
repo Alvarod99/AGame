@@ -4,8 +4,9 @@
 
     <item
         android:id="@+id/action_profile"
-        android:title="Perfil"
+        android:title="@string/perfil"
         android:icon="@drawable/baseline_assignment_ind_24"
         app:showAsAction="ifRoom"/>
+
 
 </menu>
