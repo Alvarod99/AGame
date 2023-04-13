@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AGame</string>
+    <string name="Contrasena">Contraseña</string>
+    <string name="Correo">Correo electrónico</string>
+    <string name="ContraseñaSegura">Repetir contraseña</string>
+    <string name="Nombre">Nombre</string>
+    <string name="Apellido">Apellido</string>
+    <string name="registrarse">Registrarse</string>
+
+
+</resources>

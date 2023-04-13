@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "989692846170",
+    "project_id": "agame-5a19e",
+    "storage_bucket": "agame-5a19e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989692846170:android:31d1171133038769ae3863",
+        "android_client_info": {
+          "package_name": "com.example.agame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989692846170-812ntkqhpqr1bb9jm8vi44eac3ca7p3m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjvWscZCN6j8W92mIBAOMB_6s8lKWXaPE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989692846170-812ntkqhpqr1bb9jm8vi44eac3ca7p3m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
