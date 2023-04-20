@@ -102,7 +102,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.334"
         app:layout_constraintStart_toEndOf="@+id/radioGroup"
-        tools:layout_editor_absoluteY="238dp" />
+        tools:layout_editor_absoluteY="238dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/aceptar"
