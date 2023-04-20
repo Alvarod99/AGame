@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                     finish();
                     startActivity(new Intent(LoginActivity.this,MainActivity.class));
                     Toast.makeText(LoginActivity.this,"Bienvenido",Toast.LENGTH_SHORT).show();
-                    Intent j = new Intent(LoginActivity.this, MenuActivity.class);
+                    Intent j = new Intent(LoginActivity.this, Banco.class);//estaba puesto MenuActivity.class
                     startActivity(j);
                 }
                 else{

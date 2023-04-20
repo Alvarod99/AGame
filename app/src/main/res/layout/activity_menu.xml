@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MenuActivity"
     android:background="#444444"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    >
 
     <ImageView
         android:id="@+id/imageView2"
@@ -17,7 +17,22 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        app:srcCompat="@drawable/ic_launcher_foreground"
+        android:contentDescription="@string/todo" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/bienvenido_a_nuestro_programa_de_apuestas_de_la_king_s_league"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

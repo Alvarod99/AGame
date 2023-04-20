@@ -11,6 +11,16 @@
     <string name="partidos">Partidos</string>
     <string name="noticias">Noticias</string>
     <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="todo">TODO</string>
+    <string name="bienvenido_a_nuestro_programa_de_apuestas_de_la_king_s_league">¡Bienvenido a nuestro programa de apuestas de la King\'s League!</string>
+    <string name="bienvenido_al_rea_de_transferencias">Bienvenido al área de transferencias</string>
+    <string name="ver_saldo">Ver saldo</string>
+    <string name="ingresar_dinero">Ingresar dinero</string>
+    <string name="retirar_dinero">Retirar dinero</string>
+    <string name="salir">Salir</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="cu_nto_dinero_desea_retirar">¿Cuánto dinero desea retirar?</string>
+    <string name="cantidad_de_dinero_a_ingresar">Cantidad de dinero a ingresar</string>
 
 
 </resources>
