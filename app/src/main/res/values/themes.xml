@@ -13,4 +13,9 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="ToolbarTheme">
+        <item name="android:textColorPrimary">#FF9800</item>
+        <item name="actionMenuTextColor">#FF9800</item>
+    </style>
+
 </resources>

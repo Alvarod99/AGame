@@ -8,6 +8,7 @@
     <item
         android:id="@+id/action_profile"
         android:title="@string/perfil"
+        android:textColor="#FEFEFE"
         android:icon="@drawable/baseline_assignment_ind_24"
         app:showAsAction="ifRoom"/>
 

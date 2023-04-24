@@ -8,6 +8,7 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -15,6 +16,8 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -28,8 +31,8 @@ public class MenuActivity extends AppCompatActivity {
     }
     @Override public boolean onCreateOptionsMenu(Menu miMenu){//Sigue sin funcionar
         getMenuInflater().inflate(R.menu.main_menu,miMenu);
+        getMenuInflater().inflate(R.menu.second_menu,miMenu);
 
         return true;
     }
-
 }

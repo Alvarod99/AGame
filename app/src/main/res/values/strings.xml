@@ -21,6 +21,7 @@
     <string name="aceptar">Aceptar</string>
     <string name="cu_nto_dinero_desea_retirar">¿Cuánto dinero desea retirar?</string>
     <string name="cantidad_de_dinero_a_ingresar">Cantidad de dinero a ingresar</string>
+    <string name="saldo">Saldo</string>
 
 
 </resources>

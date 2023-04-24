@@ -15,7 +15,6 @@ public class Banco extends AppCompatActivity {
     private RadioButton saldo = null;
     private RadioButton ingresar = null;
     private RadioButton retirar = null;
-    private RadioButton salir = null;
 
     private TextView textView6 = null;
 
@@ -31,7 +30,6 @@ public class Banco extends AppCompatActivity {
         saldo=findViewById(R.id.saldo);
         ingresar=findViewById(R.id.ingresar);
         retirar=findViewById(R.id.retirar);
-        salir=findViewById(R.id.salir);
 
         textView6=findViewById(R.id.textView6);
 
