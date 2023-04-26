@@ -4,8 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#444444"
     tools:context=".Banco">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_orange_light"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+    </androidx.appcompat.widget.Toolbar>
 
     <TextView
         android:id="@+id/textView5"
@@ -14,7 +26,6 @@
         android:layout_marginTop="52dp"
         android:text="@string/bienvenido_al_rea_de_transferencias"
         android:textAlignment="center"
-        android:textColor="#FEFEFE"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.554"
@@ -24,95 +35,101 @@
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="123dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
-            android:id="@+id/saldo"
+            android:id="@+id/btnVersaldo"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:onClick="accion"
             android:text="@string/ver_saldo"
-            android:textColor="#FEFEFE" />
+            />
 
         <RadioButton
-            android:id="@+id/ingresar"
-            android:layout_width="match_parent"
+            android:id="@+id/btnIngresar"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
+            android:onClick="accion"
             android:text="@string/ingresar_dinero"
-            android:textColor="#FEFEFE" />
+            />
 
         <RadioButton
-            android:id="@+id/retirar"
+            android:id="@+id/btnRetirar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:onClick="accion"
             android:text="@string/retirar_dinero"
-            android:textColor="#FEFEFE" />
+            />
     </RadioGroup>
+    <!--verSaldo es la casilla donde aparecerá el saldo actual-->
 
     <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
+        android:id="@+id/tvVerSaldo"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="56dp"
-        android:backgroundTint="#FF9800"
+        android:hint="@string/saldo"
         android:text="@string/saldo"
-        android:textColor="#FEFEFE"
+        android:textAlignment="textStart"
         android:textSize="16sp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.205"
+        app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toEndOf="@+id/radioGroup"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
-        android:id="@+id/editTextIngresar"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:id="@+id/txtIngresar"
+        android:layout_width="550dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="@string/cantidad_de_dinero_a_ingresar"
+        android:imeActionLabel="@string/cantidad_de_dinero_a_ingresar"
         android:inputType="numberDecimal"
-        android:textColorHint="#FDFDFD"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.335"
+        app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toEndOf="@+id/radioGroup"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/tvVerSaldo"
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/editTextRetirar"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:id="@+id/txtRetirar"
+        android:layout_width="550dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="@string/cu_nto_dinero_desea_retirar"
+        android:imeActionLabel="@string/cu_nto_dinero_desea_retirar"
         android:inputType="numberDecimal"
-        android:textColorHint="#FEFEFE"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.335"
+        app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toEndOf="@+id/radioGroup"
-        app:layout_constraintTop_toBottomOf="@+id/editTextIngresar"
+        app:layout_constraintTop_toBottomOf="@+id/txtIngresar"
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/aceptar"
+        android:id="@+id/btnAceptar"
         android:layout_width="90dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
-        android:backgroundTint="#FF9933"
+        android:onClick="botonAceptar"
         android:text="@string/aceptar"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextRetirar"
-        app:layout_constraintVertical_bias="0.035"
+        app:layout_constraintTop_toBottomOf="@+id/txtRetirar"
+        app:layout_constraintVertical_bias="0.121"
         tools:text="Aceptar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

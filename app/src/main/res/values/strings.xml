@@ -20,8 +20,10 @@
     <string name="salir">Salir</string>
     <string name="aceptar">Aceptar</string>
     <string name="cu_nto_dinero_desea_retirar">¿Cuánto dinero desea retirar?</string>
-    <string name="cantidad_de_dinero_a_ingresar">Cantidad de dinero a ingresar</string>
-    <string name="saldo">Saldo</string>
+    <string name="cantidad_de_dinero_a_ingresar">¿Cuanto dinero desea ingresar?</string>
+    <string name="saldo">Su saldo es de: </string>
+    <string name="todos_los_partidos_de_la_temporada">Todos los partidos de la temporada</string>
+
 
 
 </resources>

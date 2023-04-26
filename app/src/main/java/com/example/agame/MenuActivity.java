@@ -16,7 +16,7 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar myToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
     }
 
@@ -27,9 +27,21 @@ public class MenuActivity extends AppCompatActivity {
             Intent j = new Intent(MenuActivity.this, profile.class);
             startActivity(j);
         }
+        if (opcion_menu.getItemId() == R.id.hoy) {
+            Intent i = new Intent(MenuActivity.this, today.class);
+            startActivity(i);
+        }
+        if (opcion_menu.getItemId() == R.id.Partidos) {
+            Intent m = new Intent(MenuActivity.this, matches.class);
+            startActivity(m);
+        }
+        if (opcion_menu.getItemId() == R.id.Noticias) {
+            Intent n = new Intent(MenuActivity.this, news.class);
+            startActivity(n);
+        }
         return super.onOptionsItemSelected(opcion_menu);
     }
-    @Override public boolean onCreateOptionsMenu(Menu miMenu){//Sigue sin funcionar
+    @Override public boolean onCreateOptionsMenu(Menu miMenu){
         getMenuInflater().inflate(R.menu.main_menu,miMenu);
         getMenuInflater().inflate(R.menu.second_menu,miMenu);
 
