@@ -55,15 +55,15 @@
         android:id="@+id/Correo"
         android:layout_width="250dp"
         android:layout_height="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#FF9800"
         android:ems="10"
         android:hint="@string/Correo"
         android:imeActionLabel="@string/Correo"
-        android:backgroundTint="#FF9800"
-        android:textColor="#FEFEFE"
         android:inputType="textEmailAddress"
+        android:textColor="#FEFEFE"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Apellido" />
 
@@ -95,8 +95,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Contraseña"
-        app:layout_constraintVertical_bias="0.34" />
+        app:layout_constraintTop_toBottomOf="@+id/Date"
+        app:layout_constraintVertical_bias="0.343" />
+
+    <EditText
+        android:id="@+id/Date"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#FF9800"
+        android:hint="@string/fecha_de_nacimiento"
+        android:imeActionLabel="@string/fecha_de_nacimiento"
+        android:ems="10"
+        android:inputType="date"
+        android:textColor="#FEFEFE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Contraseña" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

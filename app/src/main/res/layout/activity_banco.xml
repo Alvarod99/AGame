@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#444444"
     tools:context=".Banco">
 
     <androidx.appcompat.widget.Toolbar
@@ -27,6 +28,7 @@
         android:text="@string/bienvenido_al_rea_de_transferencias"
         android:textAlignment="center"
         android:textSize="28sp"
+        android:textColor="#FEFEFE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.554"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,22 +49,23 @@
             android:id="@+id/btnVersaldo"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:textColor="#FEFEFE"
             android:onClick="accion"
-            android:text="@string/ver_saldo"
-            />
+            android:text="@string/ver_saldo" />
 
         <RadioButton
             android:id="@+id/btnIngresar"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
+            android:textColor="#FEFEFE"
             android:onClick="accion"
-            android:text="@string/ingresar_dinero"
-            />
+            android:text="@string/ingresar_dinero" />
 
         <RadioButton
             android:id="@+id/btnRetirar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:textColor="#FEFEFE"
             android:onClick="accion"
             android:text="@string/retirar_dinero"
             />
@@ -71,48 +74,51 @@
 
     <TextView
         android:id="@+id/tvVerSaldo"
-        android:layout_width="400dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="48dp"
         android:hint="@string/saldo"
-        android:text="@string/saldo"
         android:textAlignment="textStart"
+        android:backgroundTint="#FF9800"
+        android:textColor="#FEFEFE"
         android:textSize="16sp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toEndOf="@+id/radioGroup"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
         android:id="@+id/txtIngresar"
-        android:layout_width="550dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#FF9800"
+        android:textColor="#FEFEFE"
         android:ems="10"
         android:hint="@string/cantidad_de_dinero_a_ingresar"
-        android:imeActionLabel="@string/cantidad_de_dinero_a_ingresar"
         android:inputType="numberDecimal"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintHorizontal_bias="0.143"
         app:layout_constraintStart_toEndOf="@+id/radioGroup"
         app:layout_constraintTop_toBottomOf="@+id/tvVerSaldo"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/txtRetirar"
-        android:layout_width="550dp"
-        android:layout_height="48dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:backgroundTint="#FF9800"
+        android:textColor="#FEFEFE"
         android:ems="10"
         android:hint="@string/cu_nto_dinero_desea_retirar"
-        android:imeActionLabel="@string/cu_nto_dinero_desea_retirar"
         android:inputType="numberDecimal"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintHorizontal_bias="0.143"
         app:layout_constraintStart_toEndOf="@+id/radioGroup"
         app:layout_constraintTop_toBottomOf="@+id/txtIngresar"
         tools:ignore="MissingConstraints" />
@@ -121,7 +127,8 @@
         android:id="@+id/btnAceptar"
         android:layout_width="90dp"
         android:layout_height="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginBottom="44dp"
+        android:backgroundTint="#FF9933"
         android:onClick="botonAceptar"
         android:text="@string/aceptar"
         android:textSize="14sp"
@@ -129,7 +136,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRetirar"
-        app:layout_constraintVertical_bias="0.121"
         tools:text="Aceptar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

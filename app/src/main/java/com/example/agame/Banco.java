@@ -43,56 +43,54 @@ public class Banco extends AppCompatActivity {
         tvVerSaldo=findViewById(R.id.tvVerSaldo);
 
         txtIngresar=findViewById(R.id.txtIngresar);
-        txtRetirar=findViewById(R.id.txtIngresar);
+        txtRetirar=findViewById(R.id.txtRetirar);
     }
 
     @SuppressLint("SetTextI18n")
-    public void accion(View view){
-        if(rbVersaldo != null){
-            rbVersaldo.setVisibility(View.INVISIBLE);
+    public void accion(View view){//aqui enlazamos los RB con los txt respectivos
+        if(tvVerSaldo != null){
+            tvVerSaldo.setVisibility(View.INVISIBLE);
         }
-        if(rbIngresar != null){
-            rbIngresar.setVisibility(View.INVISIBLE);
+        if(txtIngresar != null){
+            txtIngresar.setVisibility(View.INVISIBLE);
         }
-        if(rbRetirar != null){
-            rbRetirar.setVisibility(View.INVISIBLE);
+        if(txtRetirar != null){
+            txtRetirar.setVisibility(View.INVISIBLE);
         }
 
 
         if(rbVersaldo != null && rbVersaldo.isChecked()){
-            rbVersaldo.setVisibility(View.VISIBLE);
-            rbVersaldo.setText("Tu saldo actual es de: "+saldoIni);
+            tvVerSaldo.setVisibility(View.VISIBLE);
+            tvVerSaldo.setText("Tu saldo actual es de: "+saldoIni);
         }
         if(rbIngresar != null && rbIngresar.isChecked()){
-            rbIngresar.setVisibility(View.VISIBLE);
+            txtIngresar.setVisibility(View.VISIBLE);
         }
         if(rbRetirar != null && rbRetirar.isChecked()){
-            rbRetirar.setVisibility(View.VISIBLE);
+            txtRetirar.setVisibility(View.VISIBLE);
         }
     }
 
     public void botonAceptar(View view){
-        rbVersaldo.setVisibility(View.INVISIBLE);
-        rbIngresar.setVisibility(View.INVISIBLE);
-        rbRetirar.setVisibility(View.INVISIBLE);
+        tvVerSaldo.setVisibility(View.INVISIBLE);
+        txtIngresar.setVisibility(View.INVISIBLE);
+        txtRetirar.setVisibility(View.INVISIBLE);
 
         if(rbVersaldo != null && rbVersaldo.isChecked()){
-            rbVersaldo.setText("Tu saldo actual es de: "+saldoIni);
+            tvVerSaldo.setText("Tu saldo actual es de: "+saldoIni);
         }
         if(rbIngresar != null && rbIngresar.isChecked()){
-            double ingresar = Double.parseDouble(null);
-            if(rbIngresar != null && rbIngresar.getText() != null){
-                ingresar = Double.parseDouble(rbIngresar.getText().toString());
-                saldoIni = saldoIni + ingresar;
-                tvVerSaldo.setText("Tu saldo actual es de: "+saldoIni);
-                tvVerSaldo.setVisibility(view.VISIBLE);
-                Toast.makeText(this, "Su operación se ha realizado con éxito", Toast.LENGTH_LONG).show();
-            }
+            double ingresar = Double.parseDouble(txtIngresar.getText().toString());
+            ingresar = Double.parseDouble(txtIngresar.getText().toString());
+            saldoIni = saldoIni + ingresar;
+            tvVerSaldo.setText("Tu saldo actual es de: "+saldoIni);
+            tvVerSaldo.setVisibility(view.VISIBLE);
+            Toast.makeText(this, "Su operación se ha realizado con éxito", Toast.LENGTH_LONG).show();
         }
         if(rbRetirar != null && rbRetirar.isChecked()){
-            double retirar = Double.parseDouble(null);
-            if(rbRetirar != null && rbRetirar.getText() != null) {
-                if((saldoIni - retirar) < 0){
+            double retirar = Double.parseDouble(txtRetirar.getText().toString());
+                if((saldoIni - retirar) < 0.0){
+                    tvVerSaldo.setVisibility(view.VISIBLE);
                     tvVerSaldo.setText("Está intentando retirar más dinero del que tiene ingresado");
                 }
                 else{
@@ -101,10 +99,6 @@ public class Banco extends AppCompatActivity {
                     tvVerSaldo.setVisibility(view.VISIBLE);
                     Toast.makeText(this, "Operación realizada exitosamente", Toast.LENGTH_LONG).show();
                 }
-
-            }
-
-
         }
 
     }
@@ -127,6 +121,10 @@ public class Banco extends AppCompatActivity {
         }
         if (opcion_menu.getItemId() == R.id.Noticias) {
             Intent n = new Intent(Banco.this, news.class);
+            startActivity(n);
+        }
+        if (opcion_menu.getItemId() == R.id.transferencias) {
+            Intent n = new Intent(Banco.this, Banco.class);
             startActivity(n);
         }
         return super.onOptionsItemSelected(opcion_menu);

@@ -23,7 +23,12 @@
     <string name="cantidad_de_dinero_a_ingresar">¿Cuanto dinero desea ingresar?</string>
     <string name="saldo">Su saldo es de: </string>
     <string name="todos_los_partidos_de_la_temporada">Todos los partidos de la temporada</string>
-
+    <string name="transferencias">Transferencias</string>
+    <string name="datos_personales">Datos personales</string>
+    <string name="actualizar">Actualizar</string>
+    <string name="fecha_de_nacimiento">Fecha de nacimiento</string>
+    <string name="actualizar_contrase_a">Actualizar contraseña</string>
+    <string name="actualizar_datos">Actualizar datos</string>
 
 
 </resources>

@@ -19,15 +19,19 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.ktx.Firebase;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Registrarse extends AppCompatActivity {
 
     Button botonRegistro;
-    EditText nombre, apellido, correo, contrasena;
+    EditText nombre, apellido, correo, contrasena, fecha_nacimiento;
     FirebaseFirestore mFirestore;
     FirebaseAuth mAuth;
+
+   // LocalDate fecha_actual = LocalDate.now();//esto debería devolverme la fecha actual
 
 
     @Override
@@ -41,6 +45,7 @@ public class Registrarse extends AppCompatActivity {
         apellido = findViewById(R.id.Apellido);
         correo = findViewById(R.id.Correo);
         contrasena = findViewById(R.id.Contraseña);
+        fecha_nacimiento=findViewById(R.id.Date);
         botonRegistro = findViewById(R.id.botonRegistro);
 
         botonRegistro.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +55,7 @@ public class Registrarse extends AppCompatActivity {
                 String apellidoUsuario = apellido.getText().toString().trim();
                 String correoUsuario = correo.getText().toString().trim();
                 String contrasenaUsuario = contrasena.getText().toString().trim();
+                String fechaNacimiento = fecha_nacimiento.getText().toString().trim();
                 if (nombreUsuario.isEmpty() || apellidoUsuario.isEmpty() || correoUsuario.isEmpty() || contrasenaUsuario.isEmpty()) {
                     Toast.makeText(Registrarse.this, "Complete todos los datos", Toast.LENGTH_LONG).show();
                 } else {
@@ -72,6 +78,7 @@ public class Registrarse extends AppCompatActivity {
                     map.put("apellido", apellidoUsuario);
                     map.put("correo", correoUsuario);
                     map.put("contrasena", contrasenaUsuario);
+                    map.put("fecha de nacimiento", fecha_nacimiento);
 
                     mFirestore.collection("user").document(id).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -91,6 +98,9 @@ public class Registrarse extends AppCompatActivity {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
+                    /*if(fecha_actual.compareTo(fecha_nacimiento)){ //Para comprobar que el que se registra es mayor de edad; fecha_actual-fecha_nacimiento;
+                        Toast.makeText(Registrarse.this, "No puede registrarse ya que no es mayor de edad", Toast.LENGTH_LONG).show();
+                    }*/
                     Toast.makeText(Registrarse.this, "Ha ocurrido un error al registrarse", Toast.LENGTH_LONG).show();
                 }
             });

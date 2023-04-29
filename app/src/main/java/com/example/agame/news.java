@@ -38,6 +38,10 @@ public class news extends AppCompatActivity {
             Intent n = new Intent(news.this, news.class);
             startActivity(n);
         }
+        if (opcion_menu.getItemId() == R.id.transferencias) {
+            Intent n = new Intent(news.this, Banco.class);
+            startActivity(n);
+        }
         return super.onOptionsItemSelected(opcion_menu);
     }
 

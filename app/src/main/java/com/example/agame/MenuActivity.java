@@ -39,6 +39,10 @@ public class MenuActivity extends AppCompatActivity {
             Intent n = new Intent(MenuActivity.this, news.class);
             startActivity(n);
         }
+        if (opcion_menu.getItemId() == R.id.transferencias) {
+            Intent n = new Intent(MenuActivity.this, Banco.class);
+            startActivity(n);
+        }
         return super.onOptionsItemSelected(opcion_menu);
     }
     @Override public boolean onCreateOptionsMenu(Menu miMenu){

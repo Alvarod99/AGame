@@ -9,7 +9,7 @@
         android:id="@+id/action_profile"
         android:title="@string/perfil"
         android:textColor="#FEFEFE"
-        android:icon="@drawable/baseline_assignment_ind_24"
+        android:icon="@drawable/common_google_signin_btn_icon_dark"
         app:showAsAction="ifRoom"/>
 
 

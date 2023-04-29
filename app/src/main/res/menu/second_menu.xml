@@ -20,4 +20,9 @@
         android:title="@string/noticias"
         app:showAsAction="never"/>
 
+    <item
+        android:id="@+id/transferencias"
+        android:title="@string/transferencias"
+        app:showAsAction="never"/>
+
 </menu>
