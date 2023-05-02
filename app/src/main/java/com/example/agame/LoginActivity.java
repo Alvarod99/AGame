@@ -44,7 +44,6 @@ public class LoginActivity extends AppCompatActivity {
                 else{
                     loginUser(emailUser,passUser);
                 }
-
             }
         });
 
@@ -56,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     finish();
                     startActivity(new Intent(LoginActivity.this,MainActivity.class));
-                    Toast.makeText(LoginActivity.this,"Bienvenido",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this,"Bienvenido "+emailUser,Toast.LENGTH_SHORT).show();
                     Intent j = new Intent(LoginActivity.this, MenuActivity.class);//estaba puesto MenuActivity.class
                     startActivity(j);
                 }

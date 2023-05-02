@@ -46,54 +46,142 @@
             android:layout_marginTop="10dp"
             android:src="@drawable/common_full_open_on_phone"/>
 
-        <TextView
-            android:id="@+id/Uname"
-            android:text="@string/Nombre"
-            android:textColor="#FEFEFE"
+
+        <!--Nombre-->
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/UnameTXT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nombre"
+                android:textSize="18sp"
+                android:textColor="#FEFEFE"
+                android:layout_marginTop="10dp"/>
+            <TextView
+                android:id="@+id/Uname"
+                android:text="@string/Nombre"
+                android:textColor="#FEFEFE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <!--Apellido-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/UsurnameTXT"
+                android:text="@string/apellido"
+                android:textColor="#FEFEFE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/Usurname"
+                android:text="@string/Apellido"
+                android:textColor="#FEFEFE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <!--Correo-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/UmailTXT"
+                android:text="@string/correo_electr_nico"
+                android:textColor="#FEFEFE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/Umail"
+                android:text="@string/Correo"
+                android:textColor="#FEFEFE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <!--Contraseña-->
+         <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+             <TextView
+                 android:id="@+id/UpasswordTXT"
+                 android:text="@string/contrase_a"
+                 android:textColor="#FEFEFE"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:textSize="18sp"
+                 android:layout_marginTop="10dp"/>
+        <TextView
+            android:id="@+id/Upassword"
+            android:text="@string/Contrasena"
+            android:textColor="#FEFEFE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <!--Edad-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/UdateTXT"
+            android:text="@string/fecha_de_nacimientoo"
+            android:textColor="#FEFEFE"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:layout_marginTop="10dp"/>
-         <TextView
-             android:id="@+id/Usurname"
-             android:text="@string/Apellido"
-             android:textColor="#FEFEFE"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:textSize="18sp"
-             android:layout_marginTop="10dp"/>
+            <TextView
+                android:id="@+id/Udate"
+                android:text="@string/fecha_de_nacimiento"
+                android:textColor="#FEFEFE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <TextView
-            android:id="@+id/Umail"
-            android:text="@string/Correo"
-            android:textColor="#FEFEFE"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:layout_marginTop="10dp"/>
-
-         <TextView
-             android:id="@+id/Upassword"
-             android:text="@string/Contrasena"
-             android:textColor="#FEFEFE"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:textSize="18sp"
-             android:layout_marginTop="10dp"/>
-
-        <TextView
-            android:id="@+id/Udate"
-            android:text="@string/fecha_de_nacimiento"
-            android:textColor="#FEFEFE"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:layout_marginTop="10dp"/>
-
+        <!--Botón actualizar-->
         <Button
             android:id="@+id/Actualizar"
             android:text="@string/actualizar_datos"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
@@ -101,18 +189,20 @@
             android:padding="15dp"
             android:backgroundTint="#FF9933"/>
 
+
+        <!--Botón actualizar contraseña-->
         <Button
             android:id="@+id/ActualizarPassword"
-            android:text="@string/actualizar_contrase_a"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:drawablePadding="15dp"
-            android:padding="15dp"
             android:layout_marginTop="5dp"
-            android:backgroundTint="#FF9933"/>
-
-
+            android:backgroundTint="#FF9933"
+            android:drawablePadding="15dp"
+            android:onClick="CambiarContrasena"
+            android:padding="15dp"
+            android:text="@string/actualizar_contrase_a" />
     </androidx.appcompat.widget.LinearLayoutCompat>
+
 
 </ScrollView>

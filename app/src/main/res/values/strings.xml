@@ -29,6 +29,16 @@
     <string name="fecha_de_nacimiento">Fecha de nacimiento</string>
     <string name="actualizar_contrase_a">Actualizar contraseña</string>
     <string name="actualizar_datos">Actualizar datos</string>
+    <string name="nombre">Nombre: </string>
+    <string name="apellido">Apellido: </string>
+    <string name="correo_electr_nico">Correo electrónico: </string>
+    <string name="contrase_a">Contraseña: </string>
+    <string name="fecha_de_nacimientoo">Fecha de nacimiento: </string>
+    <string name="credenciales">Credenciales</string>
+    <string name="enviaremos_la_solicitud_al_siguiente_correo">Enviaremos la solicitud al siguiente correo:</string>
+    <string name="correo_actual">Correo actual: </string>
+    <string name="contrase_a_actual">Contraseña actual</string>
+    <string name="nueva_contrase_a">Nueva contraseña</string>
 
 
 </resources>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CambiarContrasena"
+    android:background="#444444">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_orange_light"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:ignore="MissingConstraints">
+
+
+        <TextView
+            android:id="@+id/misCredenciales"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:text="@string/credenciales"
+            android:textColor="#FF9933"
+            android:layout_marginTop="50dp" />
+
+        <!--Correo actualde la BD-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp">
+
+            <TextView
+                android:id="@+id/correoActualTXT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/correo_actual"
+                android:textSize="18sp"
+                android:textColor="#FEFEFE" />
+
+            <TextView
+                android:id="@+id/correoActual"
+                android:text="@string/Correo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#FEFEFE" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!--Ingresar contraseña actual -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/ContrasenaActual"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="@string/contrase_a_actual"
+                android:importantForAutofill="no" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Ingresar contraseña nueva -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/ContrasenaNueva"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="@string/nueva_contrase_a"
+                android:importantForAutofill="no"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Botón aceptar-->
+        <Button
+            android:id="@+id/Aceptar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="#FF9933"
+            android:text="@string/aceptar" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
