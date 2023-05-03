@@ -3,6 +3,7 @@ package com.example.agame;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,7 +35,7 @@ public class CambiarContrasena extends AppCompatActivity {
 
 
     TextView misCredenciales, correoActual, correoActualTXT;
-    EditText ContrasenaNueva, ContrasenaActual;
+    EditText ContrasenaNueva, ActualPassword;
     Button Aceptar;
 
     DatabaseReference Usuarios_de_app;
@@ -52,7 +53,7 @@ public class CambiarContrasena extends AppCompatActivity {
         correoActual = findViewById(R.id.correoActual);
         correoActualTXT = findViewById(R.id.correoActualTXT);
         ContrasenaNueva = findViewById(R.id.ContrasenaNueva);
-        ContrasenaActual = findViewById(R.id.ContrasenaActual);
+        ActualPassword = findViewById(R.id.ActualPassword);
 
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
@@ -66,15 +67,13 @@ public class CambiarContrasena extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds : snapshot.getChildren()){
-
-
                     //Obtenemos los valores
                     String Correo = ""+ds.child("Correo").getValue();
                     String Contrasena = ""+ds.child("Contraseña").getValue();
 
                     //Seteamos datos en los TextView
                     correoActual.setText(Correo);
-                    ContrasenaActual.setText(Contrasena);
+                    ActualPassword.setText(Contrasena);
 
                 }
             }
@@ -89,7 +88,7 @@ public class CambiarContrasena extends AppCompatActivity {
         Aceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String contrasena_anterior = ContrasenaActual.getText().toString().trim();
+                String contrasena_anterior = ActualPassword.getText().toString().trim();
                 String contrasena_nueva = ContrasenaNueva.getText().toString().trim();
 
                 if(TextUtils.isEmpty(contrasena_anterior)){
@@ -100,7 +99,7 @@ public class CambiarContrasena extends AppCompatActivity {
 
                 }
                 if(!contrasena_nueva.equals("") && contrasena_nueva.length()>=5){
-                    CambioContrasena(contrasena_anterior,contrasena_nueva);
+                    CambioPassword(contrasena_anterior,contrasena_nueva);
                 }
                 else{
                     ContrasenaNueva.setError("La contraseña debe ser mayor a 5 caracteres");
@@ -112,13 +111,12 @@ public class CambiarContrasena extends AppCompatActivity {
     }
 
     //Método para cambiar de contraseña
-    private void CambioContrasena(String contrasena_anterior, String contrasena_nueva){
+    private void CambioPassword(String contrasena_anterior, String contrasena_nueva){
         progressDialog.show();
         progressDialog.setTitle("Actualizando");
         progressDialog.setMessage("Espere por favor");
         user = FirebaseAuth.getInstance().getCurrentUser();
         AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail(),contrasena_anterior);
-
         user.reauthenticate(authCredential).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
@@ -162,7 +160,7 @@ public class CambiarContrasena extends AppCompatActivity {
         });
     }
 
-    //Método para acceder a otras actividades a través del meú
+    /*//Método para acceder a otras actividades a través del meú
     public boolean onOptionsItemSelected(@NonNull MenuItem opcion_menu) {
         if (opcion_menu.getItemId() == R.id.hoy) {
             Intent i = new Intent(CambiarContrasena.this, today.class);
@@ -189,5 +187,10 @@ public class CambiarContrasena extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main_menu,miMenu);
 
         return true;
+    }*/
+    //Método para volver a la actividad anterior
+    public boolean onNavigateUp(){
+        onBackPressed();
+        return super.onNavigateUp();
     }
 }

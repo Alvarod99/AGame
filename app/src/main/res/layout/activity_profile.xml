@@ -25,6 +25,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
         </androidx.appcompat.widget.Toolbar>
+        <!--Mis datos-->
         <TextView
             android:id="@+id/misdatos"
             android:layout_width="wrap_content"
@@ -44,7 +45,7 @@
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:src="@drawable/common_full_open_on_phone"/>
+            android:src="?attr/actionModePasteDrawable"/>
 
 
         <!--Nombre-->
@@ -179,8 +180,8 @@
 
         <!--Botón actualizar-->
         <Button
-            android:id="@+id/Actualizar"
-            android:text="@string/actualizar_datos"
+            android:id="@+id/CerrarSesion"
+            android:text="@string/cerrar_sesi_n"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -192,16 +193,15 @@
 
         <!--Botón actualizar contraseña-->
         <Button
-            android:id="@+id/ActualizarPassword"
+            android:id="@+id/actualizarContrasena"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:text="@string/actualizar_contrasena"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
-            android:backgroundTint="#FF9933"
-            android:drawablePadding="15dp"
-            android:onClick="CambiarContrasena"
-            android:padding="15dp"
-            android:text="@string/actualizar_contrase_a" />
+            android:backgroundTint="#FF9933"/>
+
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 

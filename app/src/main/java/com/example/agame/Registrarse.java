@@ -1,9 +1,12 @@
 package com.example.agame;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -28,20 +31,32 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class Registrarse extends AppCompatActivity {
 
     Button btnRegistro;
     EditText nombre, apellido, correo, contrasena, fecha_nacimiento;
     FirebaseAuth mAuth;
 
-   // LocalDate fecha_actual = LocalDate.now();//esto debería devolverme la fecha actual
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrarse);
+
+        /*
+        ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setTitle("Registrarse");
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);*/
+
+
+
         mAuth = FirebaseAuth.getInstance();
 
         nombre = findViewById(R.id.Nombre);
@@ -62,16 +77,24 @@ public class Registrarse extends AppCompatActivity {
                 String apellidoUsuario = apellido.getText().toString().trim();
                 String fecha = fecha_nacimiento.getText().toString().trim();
 
+                /*Para obtener los datos de fecha de nacimiento del usuario y ver si es mayor de edad
+                DateTimeFormatter date = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                LocalDate fechaNac = LocalDate.parse(fecha);//Se supone que esto transforma la fecha en tipo LocalDate
+                LocalDate fechaActual = LocalDate.now();
+                Period period = Period.between(fechaNac, fechaActual);*/
+
                 if(!Patterns.EMAIL_ADDRESS.matcher(correoUsuario).matches()){//El correo debe contener un @
                     correo.setError("Correo no válido");
                     correo.setFocusable(true);
                 }
-                else if(contrasenaUsuario.length()<5){
-                    contrasena.setError("La contraseña debe contener mínimo 6 caracteres");
+                else if(contrasenaUsuario.length()<5){//la contraseña debe ser mayor a 5 digitos
+                    contrasena.setError("La contraseña debe contener mínimo 5 caracteres");
                     contrasena.setFocusable(true);
                 } else if (nombreUsuario.isEmpty() || apellidoUsuario.isEmpty() || correoUsuario.isEmpty() || fecha.isEmpty()) {
                     Toast.makeText(Registrarse.this, "Rellene todos los datos", Toast.LENGTH_SHORT).show();
-                } else{
+                } /*else if (period.getYears() < 18) {//Para comprobar si la persona tiene mas de 18 años
+                    Toast.makeText(Registrarse.this, "Para poder registrarse debe ser mayor de edad", Toast.LENGTH_SHORT).show();
+                }*/ else{
                     registroUsuario(correoUsuario, contrasenaUsuario);
                 }
             }

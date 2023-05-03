@@ -39,6 +39,8 @@
     <string name="correo_actual">Correo actual: </string>
     <string name="contrase_a_actual">Contraseña actual</string>
     <string name="nueva_contrase_a">Nueva contraseña</string>
+    <string name="cerrar_sesi_n">Cerrar sesión</string>
+    <string name="actualizar_contrasena">Actualizar contraseña</string>
 
 
 </resources>

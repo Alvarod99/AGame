@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,13 +27,14 @@ import org.checkerframework.common.subtyping.qual.Bottom;
 public class profile extends AppCompatActivity {
 
     TextView UnameTxt, Uname, UsurnameTXT, Usurname, UmailTXT, Umail, UpasswordTXT, Upassword, UdateTXT, Udate;
-    Button Actualizar, ActualizarPassword;
+    Button CerrarSesion, actualizarContrasena;
 
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
 
     DatabaseReference BASE_DE_DATOS;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,9 +64,10 @@ public class profile extends AppCompatActivity {
         UdateTXT = findViewById(R.id.UdateTXT);
 
         //Botones
-        Actualizar = findViewById(R.id.Actualizar);
-        ActualizarPassword = findViewById(R.id.ActualizarPassword);
+        CerrarSesion = (Button) findViewById(R.id.CerrarSesion);
+        actualizarContrasena = (Button) findViewById(R.id.actualizarContrasena);
 
+        //Firebase
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
 
@@ -80,7 +83,7 @@ public class profile extends AppCompatActivity {
                     String Apellido = ""+snapshot.child("Apellido").getValue();
                     String Correo = ""+snapshot.child("Correo").getValue();
                     String Contrasena = ""+snapshot.child("Contraseña").getValue();
-                    String Fecha = ""+snapshot.child("Fechas de nacimiento").getValue();
+                    String Fecha  = ""+snapshot.child("Fecha de nacimiento").getValue();
 
                     Uname.setText(Nombre);
                     Usurname.setText(Apellido);
@@ -89,7 +92,6 @@ public class profile extends AppCompatActivity {
                     Udate.setText(Fecha);
 
                 }
-
             }
 
             @Override
@@ -98,17 +100,46 @@ public class profile extends AppCompatActivity {
             }
         });
 
-        ActualizarPassword.setOnClickListener(new View.OnClickListener() {
+        CerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(profile.this,CambiarContrasena.class));
+                cerrarsesion();
+            }
+        });
+
+        actualizarContrasena.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Nos enviará a la activity_cambiar_contrasena
+                Intent i = new Intent(profile.this,CambiarContrasena.class);
+                startActivity(i);
             }
         });
 
     }
 
+    //Método para cerrar sesión
+    private void cerrarsesion(){
+        firebaseAuth.signOut();
+        Toast.makeText(this, "Se ha cerrado sesión", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(profile.this,LoginActivity.class));
+    }
 
-    //Método para acceder a otras actividades a través del meú
+    protected void onStart(){
+        verificacionSesion();
+        super.onStart();
+    }
+
+    private void verificacionSesion(){
+        if(user == null){
+            startActivity(new Intent(profile.this,MenuActivity.class));
+            finish();
+        }
+
+    }
+
+
+    //Método para acceder a otras actividades a través del menú
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem opcion_menu) {
         if (opcion_menu.getItemId() == R.id.hoy) {
@@ -138,15 +169,10 @@ public class profile extends AppCompatActivity {
     }
 
 
-    //para volver a la activity anterior (no funciona todavía)
+    /*para volver a la activity anterior (no funciona todavía)
     public boolean anterior(){
         onBackPressed();
 
         return super.onSupportNavigateUp();
-    }
-
-    public void CambiarContrasena(View view) {
-        Intent i = new Intent(profile.this,CambiarContrasena.class);
-        startActivity(i);
-    }
+    }*/
 }
