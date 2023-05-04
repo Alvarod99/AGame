@@ -54,6 +54,7 @@ public class CambiarContrasena extends AppCompatActivity {
         correoActualTXT = findViewById(R.id.correoActualTXT);
         ContrasenaNueva = findViewById(R.id.ContrasenaNueva);
         ActualPassword = findViewById(R.id.ActualPassword);
+        Aceptar = findViewById(R.id.Aceptar);
 
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
@@ -69,11 +70,9 @@ public class CambiarContrasena extends AppCompatActivity {
                 for(DataSnapshot ds : snapshot.getChildren()){
                     //Obtenemos los valores
                     String Correo = ""+ds.child("Correo").getValue();
-                    String Contrasena = ""+ds.child("Contraseña").getValue();
 
                     //Seteamos datos en los TextView
                     correoActual.setText(Correo);
-                    ActualPassword.setText(Contrasena);
 
                 }
             }
@@ -187,10 +186,10 @@ public class CambiarContrasena extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main_menu,miMenu);
 
         return true;
-    }*/
-    //Método para volver a la actividad anterior
+    }
+    Método para volver a la actividad anterior
     public boolean onNavigateUp(){
         onBackPressed();
         return super.onNavigateUp();
-    }
+    }*/
 }

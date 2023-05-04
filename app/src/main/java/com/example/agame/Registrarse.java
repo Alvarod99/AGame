@@ -48,14 +48,6 @@ public class Registrarse extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrarse);
 
-        /*
-        ActionBar actionBar = getSupportActionBar();
-        assert actionBar != null;
-        actionBar.setTitle("Registrarse");
-        actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);*/
-
-
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -77,11 +69,6 @@ public class Registrarse extends AppCompatActivity {
                 String apellidoUsuario = apellido.getText().toString().trim();
                 String fecha = fecha_nacimiento.getText().toString().trim();
 
-                /*Para obtener los datos de fecha de nacimiento del usuario y ver si es mayor de edad
-                DateTimeFormatter date = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                LocalDate fechaNac = LocalDate.parse(fecha);//Se supone que esto transforma la fecha en tipo LocalDate
-                LocalDate fechaActual = LocalDate.now();
-                Period period = Period.between(fechaNac, fechaActual);*/
 
                 if(!Patterns.EMAIL_ADDRESS.matcher(correoUsuario).matches()){//El correo debe contener un @
                     correo.setError("Correo no válido");
@@ -116,7 +103,6 @@ public class Registrarse extends AppCompatActivity {
                         String Nombre = nombre.getText().toString();
                         String Apellido = apellido.getText().toString();
                         String Correo = correo.getText().toString();
-                        String Contrasena = contrasena.getText().toString();
                         String Fecha = fecha_nacimiento.getText().toString();
 
                         HashMap<Object,String> datosUsuario = new HashMap<>();
@@ -124,7 +110,6 @@ public class Registrarse extends AppCompatActivity {
                         datosUsuario.put("Nombre",Nombre);
                         datosUsuario.put("Apellido",Apellido);
                         datosUsuario.put("Correo",Correo);
-                        datosUsuario.put("Contraseña",Contrasena);
                         datosUsuario.put("Fecha de nacimiento",Fecha);
 
                         //inicializamos la instacia a la base de datos de firebase

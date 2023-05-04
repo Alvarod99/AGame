@@ -26,7 +26,7 @@ import org.checkerframework.common.subtyping.qual.Bottom;
 
 public class profile extends AppCompatActivity {
 
-    TextView UnameTxt, Uname, UsurnameTXT, Usurname, UmailTXT, Umail, UpasswordTXT, Upassword, UdateTXT, Udate;
+    TextView UnameTxt, Uname, UsurnameTXT, Usurname, UmailTXT, Umail, UdateTXT, Udate;
     Button CerrarSesion, actualizarContrasena;
 
     FirebaseAuth firebaseAuth;
@@ -55,10 +55,6 @@ public class profile extends AppCompatActivity {
         Umail = findViewById(R.id.Umail);
         UmailTXT = findViewById(R.id.UmailTXT);
 
-        //Contraseña
-        Upassword = findViewById(R.id.Upassword);
-        UpasswordTXT = findViewById(R.id.UpasswordTXT);
-
         //Fecha de nacimiento
         Udate = findViewById(R.id.Udate);
         UdateTXT = findViewById(R.id.UdateTXT);
@@ -82,13 +78,13 @@ public class profile extends AppCompatActivity {
                     String Nombre = ""+snapshot.child("Nombre").getValue();
                     String Apellido = ""+snapshot.child("Apellido").getValue();
                     String Correo = ""+snapshot.child("Correo").getValue();
-                    String Contrasena = ""+snapshot.child("Contraseña").getValue();
+                    //String Contrasena = ""+snapshot.child("Contraseña").getValue();
                     String Fecha  = ""+snapshot.child("Fecha de nacimiento").getValue();
 
                     Uname.setText(Nombre);
                     Usurname.setText(Apellido);
                     Umail.setText(Correo);
-                    Upassword.setText(Contrasena);
+                    //Upassword.setText(Contrasena);
                     Udate.setText(Fecha);
 
                 }
@@ -111,12 +107,13 @@ public class profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Nos enviará a la activity_cambiar_contrasena
-                Intent i = new Intent(profile.this,CambiarContrasena.class);
+                Toast.makeText(profile.this, "Ha entrado ", Toast.LENGTH_SHORT).show();
+                Intent i= new Intent(profile.this,CambiarContrasena.class);
                 startActivity(i);
             }
         });
-
     }
+
 
     //Método para cerrar sesión
     private void cerrarsesion(){
