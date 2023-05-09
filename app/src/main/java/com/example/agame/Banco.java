@@ -78,6 +78,24 @@ public class Banco extends AppCompatActivity {
         user = firebaseAuth.getCurrentUser();
         BASE_DE_DATOS = FirebaseDatabase.getInstance().getReference("Usuarios_de_app");
 
+        BASE_DE_DATOS.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()) {
+                    String Saldo = ""+ snapshot.child("Saldo").getValue();
+                    saldoFinal = Double.parseDouble(Saldo);
+                    Toast.makeText(Banco.this, "Mi saldo es: "+saldoFinal, Toast.LENGTH_SHORT).show();
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
     }
 
@@ -112,24 +130,6 @@ public class Banco extends AppCompatActivity {
         txtIngresar.setVisibility(View.INVISIBLE);
         txtRetirar.setVisibility(View.INVISIBLE);
 
-
-        BASE_DE_DATOS.child(user.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()) {
-                    String Saldo = ""+ snapshot.child("Saldo").getValue();
-                    saldoFinal = Double.parseDouble(Saldo);
-                    Toast.makeText(Banco.this, "Mi saldo es: "+saldoFinal, Toast.LENGTH_SHORT).show();
-
-
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
 
 
