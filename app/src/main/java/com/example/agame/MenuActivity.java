@@ -40,7 +40,7 @@ public class MenuActivity extends AppCompatActivity {
             startActivity(n);
         }
         if (opcion_menu.getItemId() == R.id.transferencias) {
-            Intent n = new Intent(MenuActivity.this, Banco.class);
+            Intent n = new Intent(MenuActivity.this, GirarPantalla.class);
             startActivity(n);
         }
         return super.onOptionsItemSelected(opcion_menu);

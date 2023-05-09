@@ -26,7 +26,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.ktx.Firebase;
 
+import org.checkerframework.checker.units.qual.C;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -70,19 +75,39 @@ public class Registrarse extends AppCompatActivity {
                 String apellidoUsuario = apellido.getText().toString().trim();
                 String fecha = fecha_nacimiento.getText().toString().trim();
 
+                //Obtener fecha de nacimiento
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                Date fechaNacimiento = null;
+                try{
+                    fechaNacimiento = sdf.parse(fecha);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                //Calcular edad
+                Calendar fechaNac = Calendar.getInstance();
+                fechaNac.setTime(fechaNacimiento);
+                Calendar fechaActual = Calendar.getInstance();
+                int edad = fechaActual.get(Calendar.YEAR) - fechaNac.get(Calendar.YEAR);
+                if(fechaActual.get(Calendar.MONTH) < fechaNac.get(Calendar.MONTH)){
+                    edad--;
+                }
+                else if(fechaActual.get(Calendar.MONTH) == fechaNac.get(Calendar.MONTH) && fechaActual.get(Calendar.DAY_OF_MONTH) < fechaNac.get(Calendar.DAY_OF_MONTH)) {
+                    edad--;
+                }
 
+                //Condiciones para hacer el registro
                 if(!Patterns.EMAIL_ADDRESS.matcher(correoUsuario).matches()){//El correo debe contener un @
                     correo.setError("Correo no válido");
                     correo.setFocusable(true);
-                }
-                else if(contrasenaUsuario.length()<5){//la contraseña debe ser mayor a 5 digitos
+                } else if(contrasenaUsuario.length()<5){//la contraseña debe ser mayor a 5 digitos
                     contrasena.setError("La contraseña debe contener mínimo 5 caracteres");
                     contrasena.setFocusable(true);
-                } else if (nombreUsuario.isEmpty() || apellidoUsuario.isEmpty() || correoUsuario.isEmpty() || fecha.isEmpty()) {
+                } else if (nombreUsuario.isEmpty() || apellidoUsuario.isEmpty() || correoUsuario.isEmpty() || fecha.isEmpty()) {//No hace falta poner la contraseña ya que siempre se tiene que cumplir que haya
                     Toast.makeText(Registrarse.this, "Rellene todos los datos", Toast.LENGTH_SHORT).show();
-                } /*else if (period.getYears() < 18) {//Para comprobar si la persona tiene mas de 18 años
-                    Toast.makeText(Registrarse.this, "Para poder registrarse debe ser mayor de edad", Toast.LENGTH_SHORT).show();
-                }*/ else{
+                } else if (edad < 18) {//Verificamos si es mayor de edad
+                    fecha_nacimiento.setError("Debe ser mayor de edad para completar el registro");
+                    fecha_nacimiento.setFocusable(true);
+                } else{
                     registroUsuario(correoUsuario, contrasenaUsuario);
                 }
             }
@@ -95,16 +120,6 @@ public class Registrarse extends AppCompatActivity {
             mAuth.createUserWithEmailAndPassword(nombreUsuario, contrasenaUsuario).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    /*LocalDate fechaActual = LocalDate.now();
-                    String fechaString = fecha_nacimiento.getText().toString();//Convertimos la fecha_nacimiento a tipo LocalDate
-                    LocalDate fecha = LocalDate.parse(fechaString);
-                    Period edad = Period.between(fecha,fechaActual);
-                    int anios = edad.getYears();
-                    Toast.makeText(Registrarse.this, "tu edad es: "+anios, Toast.LENGTH_SHORT).show();
-                    //Si el registro ha sido exitoso
-                    if(anios<18){
-                        Toast.makeText(Registrarse.this, "eres menor de edad", Toast.LENGTH_SHORT).show();
-                    }*/
                     if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                              String saldo = String.valueOf(Saldo);
@@ -125,7 +140,7 @@ public class Registrarse extends AppCompatActivity {
                             datosUsuario.put("Fecha de nacimiento", Fecha);
                             datosUsuario.put("Saldo",saldo2);
 
-                            //inicializamos la instacia a la base de datos de firebase
+                            //inicializamos la instancia a la base de datos de firebase
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
                             //creamos la BD
                             DatabaseReference reference = database.getReference("Usuarios_de_app");

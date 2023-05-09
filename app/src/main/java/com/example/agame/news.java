@@ -20,6 +20,7 @@ public class news extends AppCompatActivity {
         setSupportActionBar(myToolbar);
     }
 
+    //Menú
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem opcion_menu) {
         if (opcion_menu.getItemId() == R.id.action_profile) {
@@ -39,12 +40,13 @@ public class news extends AppCompatActivity {
             startActivity(n);
         }
         if (opcion_menu.getItemId() == R.id.transferencias) {
-            Intent n = new Intent(news.this, Banco.class);
+            Intent n = new Intent(news.this, GirarPantalla.class);
             startActivity(n);
         }
         return super.onOptionsItemSelected(opcion_menu);
     }
 
+    //Menú
     @Override public boolean onCreateOptionsMenu(Menu miMenu){
         getMenuInflater().inflate(R.menu.main_menu,miMenu);
         getMenuInflater().inflate(R.menu.second_menu,miMenu);

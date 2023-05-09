@@ -84,8 +84,6 @@ public class Banco extends AppCompatActivity {
                 if(snapshot.exists()) {
                     String Saldo = ""+ snapshot.child("Saldo").getValue();
                     saldoFinal = Double.parseDouble(Saldo);
-                    Toast.makeText(Banco.this, "Mi saldo es: "+saldoFinal, Toast.LENGTH_SHORT).show();
-
 
                 }
             }

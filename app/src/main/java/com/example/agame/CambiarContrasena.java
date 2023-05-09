@@ -125,7 +125,6 @@ public class CambiarContrasena extends AppCompatActivity {
                         progressDialog.dismiss();
                         String value = ContrasenaNueva.getText().toString().trim();
                         HashMap<String,Object> result = new HashMap<>();
-                        result.put("Contraseña",value);
                         //Actualizamos la nueva contraseña en la BD
                         Usuarios_de_app.child(user.getUid()).updateChildren(result).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override

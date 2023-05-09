@@ -41,6 +41,8 @@
     <string name="nueva_contrase_a">Nueva contraseña</string>
     <string name="cerrar_sesi_n">Cerrar sesión</string>
     <string name="actualizar_contrasena">Actualizar contraseña</string>
+    <string name="bienvenidos_a_agame">¡Bienvenidos a AGame!</string>
+    <string name="gire_la_pantalla">Gire la pantalla</string>
 
 
 </resources>

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CambiarContrasena"
-    android:background="#444444">
+    android:background="#455A64">
 
 
     <androidx.appcompat.widget.LinearLayoutCompat

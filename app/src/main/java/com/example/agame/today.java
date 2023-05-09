@@ -100,7 +100,7 @@ public class today extends AppCompatActivity {
             startActivity(n);
         }
         if (opcion_menu.getItemId() == R.id.transferencias) {
-            Intent n = new Intent(today.this, Banco.class);
+            Intent n = new Intent(today.this, GirarPantalla.class);
             startActivity(n);
         }
         return super.onOptionsItemSelected(opcion_menu);

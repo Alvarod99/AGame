@@ -39,7 +39,7 @@ public class matches extends AppCompatActivity {
             startActivity(n);
         }
         if (opcion_menu.getItemId() == R.id.transferencias) {
-            Intent n = new Intent(matches.this, Banco.class);
+            Intent n = new Intent(matches.this, GirarPantalla.class);
             startActivity(n);
         }
         return super.onOptionsItemSelected(opcion_menu);
