@@ -7,6 +7,22 @@
     tools:context=".today"
     android:background="#444444">
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="16dp">
+
+        <TextView
+            android:id="@+id/sportText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="320dp"
+            android:layout_marginLeft="100dp">
+
+        </TextView>
+    </androidx.core.widget.NestedScrollView>
+
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="300dp"

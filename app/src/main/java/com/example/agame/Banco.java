@@ -10,22 +10,48 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.ktx.Firebase;
+
+import java.util.HashMap;
+
 public class Banco extends AppCompatActivity {
+    //Datos del xml
+    //RadioButton
     private RadioButton rbVersaldo = null;
     private RadioButton rbIngresar = null;
     private RadioButton rbRetirar = null;
 
+    //TextView
     private TextView tvVerSaldo = null;
 
+    //EditText
     private EditText txtIngresar = null;
     private EditText txtRetirar = null;
 
-    private double saldoIni=0.0;
+    //Botón
+    private Button btnAceptar;
+
+    //Llevar cuanta del saldo
+    double saldoFinal;
+
+    //Firebase
+    FirebaseUser user;
+    FirebaseAuth firebaseAuth;
+    DatabaseReference BASE_DE_DATOS;
+
 
     @SuppressLint({"MissingInflatedId", "CutPasteId"})
     @Override
@@ -36,14 +62,23 @@ public class Banco extends AppCompatActivity {
         Toolbar myToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
 
+        //Botones
         rbVersaldo=findViewById(R.id.btnVersaldo);
         rbIngresar=findViewById(R.id.btnIngresar);
         rbRetirar=findViewById(R.id.btnRetirar);
+        btnAceptar=findViewById(R.id.btnAceptar);
 
+        //TextView
         tvVerSaldo=findViewById(R.id.tvVerSaldo);
-
         txtIngresar=findViewById(R.id.txtIngresar);
         txtRetirar=findViewById(R.id.txtRetirar);
+
+        //Firebase
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
+        BASE_DE_DATOS = FirebaseDatabase.getInstance().getReference("Usuarios_de_app");
+
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -61,7 +96,7 @@ public class Banco extends AppCompatActivity {
 
         if(rbVersaldo != null && rbVersaldo.isChecked()){
             tvVerSaldo.setVisibility(View.VISIBLE);
-            tvVerSaldo.setText("Tu saldo actual es de: "+saldoIni);
+            tvVerSaldo.setText("Tu saldo actual es de: "+saldoFinal);
         }
         if(rbIngresar != null && rbIngresar.isChecked()){
             txtIngresar.setVisibility(View.VISIBLE);
@@ -71,40 +106,67 @@ public class Banco extends AppCompatActivity {
         }
     }
 
+    //Botón para aceptar
     public void botonAceptar(View view){
         tvVerSaldo.setVisibility(View.INVISIBLE);
         txtIngresar.setVisibility(View.INVISIBLE);
         txtRetirar.setVisibility(View.INVISIBLE);
 
+
+        BASE_DE_DATOS.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()) {
+                    String Saldo = ""+ snapshot.child("Saldo").getValue();
+                    saldoFinal = Double.parseDouble(Saldo);
+                    Toast.makeText(Banco.this, "Mi saldo es: "+saldoFinal, Toast.LENGTH_SHORT).show();
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
         if(rbVersaldo != null && rbVersaldo.isChecked()){
-            tvVerSaldo.setText("Tu saldo actual es de: "+saldoIni);
+            tvVerSaldo.setText("Tu saldo actual es de: "+saldoFinal);
         }
         if(rbIngresar != null && rbIngresar.isChecked()){
             double ingresar = Double.parseDouble(txtIngresar.getText().toString());
             ingresar = Double.parseDouble(txtIngresar.getText().toString());
-            saldoIni = saldoIni + ingresar;
-            tvVerSaldo.setText("Tu saldo actual es de: "+saldoIni);
+            saldoFinal = saldoFinal + ingresar;
+            tvVerSaldo.setText("Tu saldo actual es de: "+saldoFinal);
             tvVerSaldo.setVisibility(view.VISIBLE);
             Toast.makeText(this, "Su operación se ha realizado con éxito", Toast.LENGTH_LONG).show();
         }
         if(rbRetirar != null && rbRetirar.isChecked()){
             double retirar = Double.parseDouble(txtRetirar.getText().toString());
-                if((saldoIni - retirar) < 0.0){
+                if((saldoFinal - retirar) < 0.0){
                     tvVerSaldo.setVisibility(view.VISIBLE);
                     tvVerSaldo.setText("Está intentando retirar más dinero del que tiene ingresado");
                 }
                 else{
-                    saldoIni = saldoIni - retirar;
-                    tvVerSaldo.setText("Tu saldo actual es de: "+saldoIni);
+                    saldoFinal = saldoFinal - retirar;
+                    tvVerSaldo.setText("Tu saldo actual es de: "+saldoFinal);
                     tvVerSaldo.setVisibility(view.VISIBLE);
                     Toast.makeText(this, "Operación realizada exitosamente", Toast.LENGTH_LONG).show();
                 }
         }
+        String saldo = String.valueOf(saldoFinal);
+        String id = user.getUid();
+
+        //Firebase
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.child("Usuarios_de_app").child(id).child("Saldo").setValue(saldo);
 
     }
 
-
-
+    //Menús
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem opcion_menu) {
         if (opcion_menu.getItemId() == R.id.action_profile) {
@@ -129,6 +191,8 @@ public class Banco extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(opcion_menu);
     }
+
+    //Menús
     @Override public boolean onCreateOptionsMenu(Menu miMenu){
         getMenuInflater().inflate(R.menu.main_menu,miMenu);
         getMenuInflater().inflate(R.menu.second_menu,miMenu);

@@ -78,13 +78,11 @@ public class profile extends AppCompatActivity {
                     String Nombre = ""+snapshot.child("Nombre").getValue();
                     String Apellido = ""+snapshot.child("Apellido").getValue();
                     String Correo = ""+snapshot.child("Correo").getValue();
-                    //String Contrasena = ""+snapshot.child("Contraseña").getValue();
                     String Fecha  = ""+snapshot.child("Fecha de nacimiento").getValue();
 
                     Uname.setText(Nombre);
                     Usurname.setText(Apellido);
                     Umail.setText(Correo);
-                    //Upassword.setText(Contrasena);
                     Udate.setText(Fecha);
 
                 }
@@ -107,7 +105,6 @@ public class profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Nos enviará a la activity_cambiar_contrasena
-                Toast.makeText(profile.this, "Ha entrado ", Toast.LENGTH_SHORT).show();
                 Intent i= new Intent(profile.this,CambiarContrasena.class);
                 startActivity(i);
             }

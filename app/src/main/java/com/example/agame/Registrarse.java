@@ -40,6 +40,7 @@ public class Registrarse extends AppCompatActivity {
 
     Button btnRegistro;
     EditText nombre, apellido, correo, contrasena, fecha_nacimiento;
+    Double Saldo = 0.00;
     FirebaseAuth mAuth;
 
 
@@ -94,37 +95,48 @@ public class Registrarse extends AppCompatActivity {
             mAuth.createUserWithEmailAndPassword(nombreUsuario, contrasenaUsuario).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
+                    /*LocalDate fechaActual = LocalDate.now();
+                    String fechaString = fecha_nacimiento.getText().toString();//Convertimos la fecha_nacimiento a tipo LocalDate
+                    LocalDate fecha = LocalDate.parse(fechaString);
+                    Period edad = Period.between(fecha,fechaActual);
+                    int anios = edad.getYears();
+                    Toast.makeText(Registrarse.this, "tu edad es: "+anios, Toast.LENGTH_SHORT).show();
                     //Si el registro ha sido exitoso
-                    if(task.isSuccessful()){
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        //Datos a registrar
-                        assert user != null; //el usuario es distinto de null
-                        String id = user.getUid();
-                        String Nombre = nombre.getText().toString();
-                        String Apellido = apellido.getText().toString();
-                        String Correo = correo.getText().toString();
-                        String Fecha = fecha_nacimiento.getText().toString();
+                    if(anios<18){
+                        Toast.makeText(Registrarse.this, "eres menor de edad", Toast.LENGTH_SHORT).show();
+                    }*/
+                    if (task.isSuccessful()) {
+                            FirebaseUser user = mAuth.getCurrentUser();
+                             String saldo = String.valueOf(Saldo);
+                            //Datos a registrar
+                            assert user != null; //el usuario es distinto de null
+                            String id = user.getUid();
+                            String Nombre = nombre.getText().toString();
+                            String Apellido = apellido.getText().toString();
+                            String Correo = correo.getText().toString();
+                            String Fecha = fecha_nacimiento.getText().toString();
+                            String saldo2 = saldo.toString();
 
-                        HashMap<Object,String> datosUsuario = new HashMap<>();
-                        datosUsuario.put("id",id);
-                        datosUsuario.put("Nombre",Nombre);
-                        datosUsuario.put("Apellido",Apellido);
-                        datosUsuario.put("Correo",Correo);
-                        datosUsuario.put("Fecha de nacimiento",Fecha);
+                            HashMap<Object, String> datosUsuario = new HashMap<>();
+                            datosUsuario.put("id", id);
+                            datosUsuario.put("Nombre", Nombre);
+                            datosUsuario.put("Apellido", Apellido);
+                            datosUsuario.put("Correo", Correo);
+                            datosUsuario.put("Fecha de nacimiento", Fecha);
+                            datosUsuario.put("Saldo",saldo2);
 
-                        //inicializamos la instacia a la base de datos de firebase
-                        FirebaseDatabase database = FirebaseDatabase.getInstance();
-                        //creamos la BD
-                        DatabaseReference reference = database.getReference("Usuarios_de_app");
-                        reference.child(id).setValue(datosUsuario);
-                        Toast.makeText(Registrarse.this, "El registro se ha realizado correctamente", Toast.LENGTH_SHORT).show();
-                        //Una vez registrado, vamos a a activity_menu
-                        startActivity(new Intent(Registrarse.this, MenuActivity.class));
+                            //inicializamos la instacia a la base de datos de firebase
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            //creamos la BD
+                            DatabaseReference reference = database.getReference("Usuarios_de_app");
+                            reference.child(id).setValue(datosUsuario);
+                            Toast.makeText(Registrarse.this, "El registro se ha realizado correctamente", Toast.LENGTH_SHORT).show();
+                            //Una vez registrado, vamos a activity_menu
+                            startActivity(new Intent(Registrarse.this, MenuActivity.class));
 
-                    }
-                    else{
-                        Toast.makeText(Registrarse.this, "Ha ocurrido  un error al registrarse", Toast.LENGTH_SHORT).show();
-                    }
+                        } else {
+                            Toast.makeText(Registrarse.this, "Ha ocurrido  un error al registrarse", Toast.LENGTH_SHORT).show();
+                        }
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
