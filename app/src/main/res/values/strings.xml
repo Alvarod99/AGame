@@ -43,6 +43,15 @@
     <string name="actualizar_contrasena">Actualizar contraseña</string>
     <string name="bienvenidos_a_agame">¡Bienvenidos a AGame!</string>
     <string name="gire_la_pantalla">Gire la pantalla</string>
+    <string name="estos_son_los_pr_ximos_eventos">¡Estos son los próximos eventos!</string>
+    <string name="real_madrid">Real Madrid</string>
+    <string name="cuotax">CuotaX</string>
+    <string name="cuota2">Cuota2</string>
+    <string name="cuota1">Cuota1</string>
+    <string name="deporte">Deporte</string>
+    <string name="home_team">Home Team</string>
+    <string name="vs">VS</string>
+    <string name="away_team">Away Team</string>
 
 
 </resources>

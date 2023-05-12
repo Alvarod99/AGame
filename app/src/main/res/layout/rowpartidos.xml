@@ -1,0 +1,71 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:background="#455A64">
+
+    <TextView
+        android:id="@+id/Sport_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/deporte"
+        android:textSize="17sp"/>
+
+    <TextView
+        android:id="@+id/Home_team"
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:text="@string/home_team"
+        android:textColor="#FF9800"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/VS"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:text="@string/vs"
+        android:textColor="#070605"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/Away_team"
+        android:layout_width="154dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:text="@string/away_team"
+        android:textColor="#FF5722"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/Price1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:text="@string/cuota1"
+        android:textAlignment="textStart"
+        android:textColor="#FFEB3B"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/PriceX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:text="@string/cuotax"
+        android:textColor="#FFEB3B"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/Price2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:text="@string/cuota2"
+        android:textColor="#FFEB3B"
+        android:textSize="20sp" />
+
+
+</LinearLayout>
+
