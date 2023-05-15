@@ -1,41 +1,45 @@
 package com.example.agame;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 import com.example.agame.models.Sport;
-import java.util.List;
-import retrofit2.Call;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import android.os.Bundle;
-import android.view.Gravity;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class today extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+public class today extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private static final String API_BASE_URL = "https://api.the-odds-api.com";
     private TextView sportText;
     private TextView tvDescripcion;
     private IbetRESTAPIService apiService;
+    public final String[] sport_titles = new String[]{"Futbol", "Baloncesto"};
+    public final String[] home_teams = new String[]{"Real Madrid", "Milan"};
+    public final String[] away_teams = new String[]{"Manchester City", "Inter"};
+    public final Double[] prices1 = new Double[]{Double.valueOf("2.06"), Double.valueOf("1.38")};
+    public final Double[] prices2 = new Double[]{Double.valueOf("1.80"), Double.valueOf("1.98")};
+    public final Double[] pricesX = new Double[]{Double.valueOf("1.5"), Double.valueOf("3.68")};
+
+    private ListView listView;
+    List<rowpartidos> RowPartidos;
+    private ArrayAdapter<rowpartidos> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,22 @@ public class today extends AppCompatActivity {
 
         apiService = retrofit.create(IbetRESTAPIService.class);
         this.getSport();
+
+        RowPartidos = new ArrayList<rowpartidos>();
+        for (int i = 0; i < home_teams.length; i++) {
+            rowpartidos item = new rowpartidos(sport_titles[i], home_teams[i], away_teams[i], prices1[i], prices2[i], pricesX[i]);
+            RowPartidos.add(item);
+        }
+        for (int j = 0; j < away_teams.length; j++) {
+            rowpartidos item = new rowpartidos(sport_titles[j], home_teams[j], away_teams[j], prices1[j], prices2[j], pricesX[j]);
+            RowPartidos.add(item);
+        }
+
+
+        listView = (ListView) findViewById(R.id.listView);
+        RowArrayAdapter adapter = new RowArrayAdapter(this, R.layout.rowpartidos, RowPartidos);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(this);
 
     }
 
@@ -122,52 +142,11 @@ public class today extends AppCompatActivity {
         return true;
     }
 
-}
-    class Today extends AppCompatActivity implements AdapterView.OnItemClickListener {
-
-        public final String[] sport_titles = new String[] {"Futbol", "Baloncesto"};
-        public final String[] home_teams = new String[] {"Real Madrid", "Milan"};
-        public final String[] away_teams = new String[] {"Manchester City", "Inter"};
-        public final Double[] prices1 = new Double[] {Double.valueOf("2.06"), Double.valueOf("1.38")};
-        public final Double[] prices2 = new Double[] {Double.valueOf("1.80"), Double.valueOf("1.98")};
-        public final Double[] pricesX = new Double[] {Double.valueOf("1.5"), Double.valueOf("3.68")};
-
-        private ListView listView;
-        List<rowpartidos> RowPartidos;
-        private ArrayAdapter<rowpartidos> adapter;
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState){
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_today);
-
-            RowPartidos = new ArrayList<rowpartidos>();
-            for(int i=0; i < home_teams.length; i++){
-                rowpartidos item = new rowpartidos(sport_titles[i],home_teams[i],away_teams[i], prices1[i], prices2[i],pricesX[i] );
-                RowPartidos.add(item);
-            }
-            for(int j=0; j < away_teams.length; j++){
-                rowpartidos item = new rowpartidos(sport_titles[j],home_teams[j],away_teams[j], prices1[j], prices2[j],pricesX[j] );
-                RowPartidos.add(item);
-            }
-
-
-            listView = (ListView) findViewById(R.id.listView);
-            RowArrayAdapter adapter = new RowArrayAdapter(this, R.layout.rowpartidos, RowPartidos);//no se si es R.layout.rowpartidos
-            listView.setAdapter(adapter);
-            listView.setOnItemClickListener(this);
-        }
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-            Toast toast = Toast.makeText(getApplicationContext(), "Item"+ (position+1)+ ": "+ RowPartidos.get(position), Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL,0,0);
-            toast.show();
-
-        }
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Toast toast = Toast.makeText(getApplicationContext(), "Item" + (position + 1) + ": " + RowPartidos.get(position), Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+        toast.show();
 
     }
-    
-    
-    
-    
-    
 
+}

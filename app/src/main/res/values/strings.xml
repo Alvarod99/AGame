@@ -52,6 +52,10 @@
     <string name="home_team">Home Team</string>
     <string name="vs">VS</string>
     <string name="away_team">Away Team</string>
+    <string name="importe">Importe:</string>
+    <string name="ganancias">Ganancias:</string>
+    <string name="esta_es_tu_apuesta">¡Esta es tu apuesta!</string>
+    <string name="euro">€</string>
 
 
 </resources>

@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class RowArrayAdapter extends ArrayAdapter<rowpartidos> {
     Context context;
 
@@ -34,9 +36,9 @@ public class RowArrayAdapter extends ArrayAdapter<rowpartidos> {
             convertView = mInflater.inflate(R.layout.rowpartidos,null);
             holder = new RowItemHolder();
 
-            holder.txtSport_title = (TextView) convertView.findViewById(R.id.Sport_title);//no se si es este sport_title
-            holder.txtHome_team = (EditText) convertView.findViewById(R.id.Home_team);//no se si es este home_team
-            holder.txtAway_team = (EditText) convertView.findViewById(R.id.Away_team);//no se si es este away_team
+            holder.txtSport_title = (TextView) convertView.findViewById(R.id.Deporte);//no se si es este sport_title
+            holder.txtHome_team = (TextView) convertView.findViewById(R.id.Home_team);//no se si es este home_team
+            holder.txtAway_team = (TextView) convertView.findViewById(R.id.Away_team);//no se si es este away_team
             holder.BtPrice1 = (Button) convertView.findViewById(R.id.Price1);//no se si es este price1
             holder.BtPrice2 = (Button) convertView.findViewById(R.id.Price2);//no se si es este price2
             holder.BtPriceX = (Button) convertView.findViewById(R.id.PriceX);//no se si es este priceX

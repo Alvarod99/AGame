@@ -1,71 +1,111 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="180dp"
+    android:layout_height="280dp"
     android:background="#455A64">
 
+
     <TextView
-        android:id="@+id/Sport_title"
+        android:id="@+id/Deporte"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="@string/deporte"
-        android:textSize="17sp"/>
+        android:textColor="#090703"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Home_team"
-        android:layout_width="155dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="60dp"
         android:text="@string/home_team"
         android:textColor="#FF9800"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        app:layout_constraintEnd_toStartOf="@+id/VS"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Deporte" />
 
     <TextView
         android:id="@+id/VS"
-        android:layout_width="45dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="65dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="116dp"
         android:text="@string/vs"
         android:textColor="#070605"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/Price1"
+        app:layout_constraintStart_toEndOf="@+id/Deporte"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.031" />
 
     <TextView
         android:id="@+id/Away_team"
-        android:layout_width="154dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="108dp"
         android:text="@string/away_team"
         android:textColor="#FF5722"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toEndOf="@+id/VS"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/Price1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="32dp"
         android:text="@string/cuota1"
         android:textAlignment="textStart"
         android:textColor="#FFEB3B"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/PriceX"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Home_team"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/PriceX"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="65dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="32dp"
         android:text="@string/cuotax"
         android:textColor="#FFEB3B"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/Away_team"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/Home_team"
+        app:layout_constraintTop_toBottomOf="@+id/VS"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/Price2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="65dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
         android:text="@string/cuota2"
         android:textColor="#FFEB3B"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.155"
+        app:layout_constraintStart_toEndOf="@+id/PriceX"
+        app:layout_constraintTop_toBottomOf="@+id/Away_team"
+        app:layout_constraintVertical_bias="0.017" />
 
-
-</LinearLayout>
-
+</androidx.constraintlayout.widget.ConstraintLayout>
