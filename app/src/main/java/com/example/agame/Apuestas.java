@@ -56,10 +56,6 @@ public class Apuestas extends AppCompatActivity {
             Intent m = new Intent(Apuestas.this, matches.class);
             startActivity(m);
         }
-        if (opcion_menu.getItemId() == R.id.Noticias) {
-            Intent n = new Intent(Apuestas.this, news.class);
-            startActivity(n);
-        }
         if (opcion_menu.getItemId() == R.id.transferencias) {
             Intent n = new Intent(Apuestas.this, GirarPantalla.class);
             startActivity(n);

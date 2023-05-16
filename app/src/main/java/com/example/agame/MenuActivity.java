@@ -35,10 +35,6 @@ public class MenuActivity extends AppCompatActivity {
             Intent m = new Intent(MenuActivity.this, matches.class);
             startActivity(m);
         }
-        if (opcion_menu.getItemId() == R.id.Noticias) {
-            Intent n = new Intent(MenuActivity.this, news.class);
-            startActivity(n);
-        }
         if (opcion_menu.getItemId() == R.id.transferencias) {
             Intent n = new Intent(MenuActivity.this, GirarPantalla.class);
             startActivity(n);

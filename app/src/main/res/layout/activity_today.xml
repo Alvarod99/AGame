@@ -22,9 +22,9 @@
     <TextView
         android:id="@+id/ProximosEventos"
         android:layout_width="250dp"
-        android:layout_height="48dp"
+        android:layout_height="80dp"
         android:layout_marginTop="150dp"
-        android:text="@string/estos_son_los_pr_ximos_eventos"
+        android:text="@string/estos_son_nuestros_eventos_de_los_pr_ximos_8_d_as"
         android:textAlignment="center"
         android:textColor="#FEFEFE"
         android:textSize="20sp"
@@ -50,7 +50,7 @@
     <ListView
         android:id="@+id/listView"
         android:layout_width="wrap_content"
-        android:layout_height="532dp"
+        android:layout_height="500dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ProximosEventos"

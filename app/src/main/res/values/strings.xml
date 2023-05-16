@@ -56,6 +56,8 @@
     <string name="ganancias">Ganancias:</string>
     <string name="esta_es_tu_apuesta">¡Esta es tu apuesta!</string>
     <string name="euro">€</string>
+    <string name="pr_ximos_eventos">Próximos eventos</string>
+    <string name="estos_son_nuestros_eventos_de_los_pr_ximos_8_d_as">¡Estos son nuestros eventos de los próximos 8 días!</string>
 
 
 </resources>

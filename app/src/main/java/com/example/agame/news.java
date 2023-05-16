@@ -35,10 +35,6 @@ public class news extends AppCompatActivity {
             Intent m = new Intent(news.this, matches.class);
             startActivity(m);
         }
-        if (opcion_menu.getItemId() == R.id.Noticias) {
-            Intent n = new Intent(news.this, news.class);
-            startActivity(n);
-        }
         if (opcion_menu.getItemId() == R.id.transferencias) {
             Intent n = new Intent(news.this, GirarPantalla.class);
             startActivity(n);

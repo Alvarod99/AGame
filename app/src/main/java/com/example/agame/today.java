@@ -53,7 +53,6 @@ public class today extends AppCompatActivity implements AdapterView.OnItemClickL
                 .build();
 
         apiService = retrofit.create(IbetRESTAPIService.class);
-        this.getSport();
 
         RowPartidos = new ArrayList<rowpartidos>();
         for (int i = 0; i < home_teams.length; i++) {
@@ -73,41 +72,6 @@ public class today extends AppCompatActivity implements AdapterView.OnItemClickL
 
     }
 
-    public void getSport() {
-        Call<List<Sport>> call = apiService.getSports();
-
-
-        /*call.enqueue(new Callback<List<Sport>>() {
-            @Override
-            public void onResponse(Call<List<Sport>> call, Response<List<Sport>> response) {
-                List<Sport> sportList = response.body();
-                if (sportList != null) {
-                    for (Sport sport : sportList) {
-                        sportText.append("key: " + sport.getKey());
-                        sportText.append("group: " + sport.getGroup());
-                        sportText.append("title: " + sport.getTitle());
-                        sportText.append("description: " + sport.getDescription());
-                        sportText.append("Is the sport active: " + sport.getActive().toString());
-                        sportText.append("Has outrights: " + sport.getHas_outrights().toString());
-                        sportText.append("\n\n");
-                    }
-                }
-
-
-
-            }
-
-            @Override
-            public void onFailure(Call<List<Sport>> call, Throwable t) {
-                Toast.makeText(
-                        getApplicationContext(),
-                        "ERROR: " + t.getMessage(),
-                        Toast.LENGTH_LONG
-                ).show();
-
-            }
-        });*/
-    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem opcion_menu) {
@@ -122,10 +86,6 @@ public class today extends AppCompatActivity implements AdapterView.OnItemClickL
         if (opcion_menu.getItemId() == R.id.Partidos) {
             Intent m = new Intent(today.this, matches.class);
             startActivity(m);
-        }
-        if (opcion_menu.getItemId() == R.id.Noticias) {
-            Intent n = new Intent(today.this, news.class);
-            startActivity(n);
         }
         if (opcion_menu.getItemId() == R.id.transferencias) {
             Intent n = new Intent(today.this, GirarPantalla.class);
@@ -146,7 +106,6 @@ public class today extends AppCompatActivity implements AdapterView.OnItemClickL
         Toast toast = Toast.makeText(getApplicationContext(), "Item" + (position + 1) + ": " + RowPartidos.get(position), Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
         toast.show();
-
     }
 
 }

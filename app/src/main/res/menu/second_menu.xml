@@ -7,7 +7,7 @@
 
     <item
         android:id="@+id/hoy"
-        android:title="@string/hoy"
+        android:title="@string/pr_ximos_eventos"
         app:showAsAction="never"/>
 
     <item
@@ -15,10 +15,6 @@
         android:title="@string/partidos"
         app:showAsAction="never"/>
 
-    <item
-        android:id="@+id/Noticias"
-        android:title="@string/noticias"
-        app:showAsAction="never"/>
 
     <item
         android:id="@+id/transferencias"
