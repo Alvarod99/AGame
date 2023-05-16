@@ -32,10 +32,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class today extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class today extends AppCompatActivity{
     private static final String API_BASE_URL = "https://api.the-odds-api.com";
-    private TextView sportText;
-    private TextView tvDescripcion;
     Button price1, price2, priceX;
     private IbetRESTAPIService apiService;
 
@@ -46,7 +44,7 @@ public class today extends AppCompatActivity implements AdapterView.OnItemClickL
 
     @SuppressLint("MissingInflatedId")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_today);
         Toolbar myToolbar = findViewById(R.id.toolbar);
@@ -55,6 +53,14 @@ public class today extends AppCompatActivity implements AdapterView.OnItemClickL
         price1 = findViewById(R.id.Price1);
         price2 = findViewById(R.id.Price2);
         priceX = findViewById(R.id.PriceX);
+
+        /*price1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(today.this,Apuestas.class);
+                startActivity(i);
+            }
+        });*/
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(API_BASE_URL)
@@ -68,18 +74,9 @@ public class today extends AppCompatActivity implements AdapterView.OnItemClickL
         listView = (ListView) findViewById(R.id.listView);
         adapter = new RowArrayAdapter(this, R.layout.rowpartidos, rowPartidos);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(this);
         this.getEvent();
 
 /*
-        price1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(today.this,Apuestas.class);
-                startActivity(i);
-            }
-        });
-
         price2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -184,12 +181,6 @@ public class today extends AppCompatActivity implements AdapterView.OnItemClickL
         getMenuInflater().inflate(R.menu.second_menu, miMenu);
 
         return true;
-    }
-
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast toast = Toast.makeText(getApplicationContext(), "Item" + (position + 1) + ": " + RowPartidos.get(position), Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
-        toast.show();
     }
 
 }

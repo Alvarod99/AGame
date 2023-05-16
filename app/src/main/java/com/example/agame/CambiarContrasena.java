@@ -157,38 +157,4 @@ public class CambiarContrasena extends AppCompatActivity {
             }
         });
     }
-
-    /*//Método para acceder a otras actividades a través del meú
-    public boolean onOptionsItemSelected(@NonNull MenuItem opcion_menu) {
-        if (opcion_menu.getItemId() == R.id.hoy) {
-            Intent i = new Intent(CambiarContrasena.this, today.class);
-            startActivity(i);
-        }
-        if (opcion_menu.getItemId() == R.id.Partidos) {
-            Intent m = new Intent(CambiarContrasena.this, matches.class);
-            startActivity(m);
-        }
-        if (opcion_menu.getItemId() == R.id.Noticias) {
-            Intent n = new Intent(CambiarContrasena.this, news.class);
-            startActivity(n);
-        }
-        if (opcion_menu.getItemId() == R.id.transferencias) {
-            Intent n = new Intent(CambiarContrasena.this, Banco.class);
-            startActivity(n);
-        }
-        return super.onOptionsItemSelected(opcion_menu);
-    }
-
-    //Menús
-    @Override public boolean onCreateOptionsMenu(Menu miMenu){
-        getMenuInflater().inflate(R.menu.second_menu,miMenu);
-        getMenuInflater().inflate(R.menu.main_menu,miMenu);
-
-        return true;
-    }
-    Método para volver a la actividad anterior
-    public boolean onNavigateUp(){
-        onBackPressed();
-        return super.onNavigateUp();
-    }*/
 }

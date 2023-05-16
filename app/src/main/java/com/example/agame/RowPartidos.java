@@ -1,5 +1,12 @@
 package com.example.agame;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.appcompat.widget.Toolbar;
+
 public class RowPartidos {
     private String sport_title, home_team,away_team;
     private Double price1, priceX, price2;

@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,7 +24,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Apuestas extends AppCompatActivity {
 
-    private EditText txtStaticImporte, txtStaticGanancias, txtImporte, txtGanancias;
+    private EditText txtImporte;
+    private TextView txtGanancias,txtStaticGanancias,txtStaticImporte;
     private Button aceptar;
 
     Double saldoFinal;
@@ -48,7 +50,7 @@ public class Apuestas extends AppCompatActivity {
         txtGanancias = findViewById(R.id.Ganancias);
         aceptar = findViewById(R.id.aceptar);
 
-        BASE_DE_DATOS.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+        /*BASE_DE_DATOS.child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()) {
@@ -62,7 +64,7 @@ public class Apuestas extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });*/
 
         aceptar.setOnClickListener(new View.OnClickListener() {
             @Override

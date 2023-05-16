@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/agamelogo" />
 
-    <EditText
+    <TextView
         android:id="@+id/Apuesta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
-    <EditText
+    <TextView
         android:id="@+id/staticImporte"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Apuesta" />
 
-    <EditText
+    <TextView
         android:id="@+id/staticGanancias"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -99,14 +99,13 @@
         android:id="@+id/euro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="340dp"
         android:text="@string/euro"
         android:textColor="@color/white"
         android:textSize="37sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.813"
-        app:layout_constraintStart_toEndOf="@+id/Ganancias" />
+        app:layout_constraintHorizontal_bias="0.728"
+        app:layout_constraintStart_toEndOf="@+id/Ganancias"
+        app:layout_constraintTop_toTopOf="@+id/Ganancias" />
 
     <Button
         android:id="@+id/aceptar"

@@ -9,15 +9,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 public class matches extends AppCompatActivity {
 
+    private Spinner Spinner = null;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matches);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Toolbar myToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
+
+        Spinner = findViewById(R.id.spinner);
+
+        String [] lista = {"Seleccionar deporte", "Fútbol", "Baloncesto", "Tenis"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,lista);
+        Spinner.setAdapter(adapter);
+
     }
 
     @Override
