@@ -8,15 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-public class RowArrayAdapter extends ArrayAdapter<rowpartidos> {
+public class RowArrayAdapter extends ArrayAdapter<RowPartidos> {
     Context context;
 
-    public RowArrayAdapter(Context context, int resourceId, List<rowpartidos> partidos){
+    public RowArrayAdapter(Context context, int resourceId, List<RowPartidos> partidos){
         super(context,resourceId,partidos);
         this.context=context;
     }
@@ -28,7 +25,7 @@ public class RowArrayAdapter extends ArrayAdapter<rowpartidos> {
 
     public View getView(int position, View convertView, ViewGroup parent){
         RowItemHolder holder = null;
-        rowpartidos RowPartidos = getItem(position);
+        RowPartidos RowPartidos = getItem(position);
 
         LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 

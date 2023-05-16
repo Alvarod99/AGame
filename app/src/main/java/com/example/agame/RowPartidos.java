@@ -1,10 +1,10 @@
 package com.example.agame;
 
-public class rowpartidos {
+public class RowPartidos {
     private String sport_title, home_team,away_team;
     private Double price1, priceX, price2;
 
-    public rowpartidos(String sport_title, String home_team,
+    public RowPartidos(String sport_title, String home_team,
                        String away_team, Double price1, Double price2, Double priceX){
         this.sport_title =sport_title;
         this.home_team=home_team;

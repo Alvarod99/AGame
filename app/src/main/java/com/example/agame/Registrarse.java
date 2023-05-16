@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -47,6 +48,7 @@ public class Registrarse extends AppCompatActivity {
     EditText nombre, apellido, correo, contrasena, fecha_nacimiento;
     Double Saldo = 0.00;
     FirebaseAuth mAuth;
+    int edad;
 
 
     @Override
@@ -76,7 +78,8 @@ public class Registrarse extends AppCompatActivity {
                 String fecha = fecha_nacimiento.getText().toString().trim();
 
                 //Obtener fecha de nacimiento
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                sdf.setLenient(false);//desactiva el análisis flexible de fechas
                 Date fechaNacimiento = null;
                 try{
                     fechaNacimiento = sdf.parse(fecha);
@@ -84,15 +87,25 @@ public class Registrarse extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 //Calcular edad
-                Calendar fechaNac = Calendar.getInstance();
-                fechaNac.setTime(fechaNacimiento);
-                Calendar fechaActual = Calendar.getInstance();
-                int edad = fechaActual.get(Calendar.YEAR) - fechaNac.get(Calendar.YEAR);
-                if(fechaActual.get(Calendar.MONTH) < fechaNac.get(Calendar.MONTH)){
-                    edad--;
-                }
-                else if(fechaActual.get(Calendar.MONTH) == fechaNac.get(Calendar.MONTH) && fechaActual.get(Calendar.DAY_OF_MONTH) < fechaNac.get(Calendar.DAY_OF_MONTH)) {
-                    edad--;
+                //Calendar fechaNac = Calendar.getInstance();
+                if(fechaNacimiento != null) {
+                    Calendar fechaNac = Calendar.getInstance();
+                    fechaNac.setTime(fechaNacimiento);
+                    Calendar fechaActual = Calendar.getInstance();
+                    edad = fechaActual.get(Calendar.YEAR) - fechaNac.get(Calendar.YEAR);
+
+                    if (fechaActual.get(Calendar.MONTH) < fechaNac.get(Calendar.MONTH)) {
+                        edad--;
+                    }else if (fechaActual.get(Calendar.MONTH) == fechaNac.get(Calendar.MONTH) && fechaActual.get(Calendar.DAY_OF_MONTH) < fechaNac.get(Calendar.DAY_OF_MONTH)) {
+                        edad--;
+                    }
+
+                    //Verificar si la fecha es una fecha real
+                    if(fechaNac.after(fechaActual) || edad < 18){
+                        fecha_nacimiento.setError("Debe ser mayor de edad para completar el registro o introducir una fecha válida");
+                        fecha_nacimiento.setFocusable(true);
+                        return;
+                    }
                 }
 
                 //Condiciones para hacer el registro
@@ -105,9 +118,9 @@ public class Registrarse extends AppCompatActivity {
                 } else if (nombreUsuario.isEmpty() || apellidoUsuario.isEmpty() || correoUsuario.isEmpty() || fecha.isEmpty()) {//No hace falta poner la contraseña ya que siempre se tiene que cumplir que haya
                     Toast.makeText(Registrarse.this, "Rellene todos los datos", Toast.LENGTH_SHORT).show();
                 } else if (edad < 18) {//Verificamos si es mayor de edad
-                    fecha_nacimiento.setError("Debe ser mayor de edad para completar el registro");
+                    fecha_nacimiento.setError("Debe ser mayor de edad para completar el registro o introducir una fecha válida");
                     fecha_nacimiento.setFocusable(true);
-                } else{
+                }else{
                     registroUsuario(correoUsuario, contrasenaUsuario);
                 }
             }

@@ -71,7 +71,10 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
     public void Registrarse(View view){
-        Intent i = new Intent(this,Registrarse.class);
+        Intent i = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            i = new Intent(this, Registrarse.class);
+        }
         startActivity(i);
     }
 }

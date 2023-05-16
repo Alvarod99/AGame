@@ -12,8 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="@string/deporte"
         android:textColor="#090703"
+        android:text="@string/deporte"
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/Home_team"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,11 +29,9 @@
         android:textColor="#FF9800"
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/Price1"
-        app:layout_constraintEnd_toStartOf="@+id/VS"
-        app:layout_constraintHorizontal_bias="0.198"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.983" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/VS"
@@ -42,12 +40,12 @@
         android:text="@string/vs"
         android:textColor="#070605"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.446"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.501" />
+        app:layout_constraintBottom_toBottomOf="@+id/Home_team"
+        app:layout_constraintEnd_toStartOf="@+id/Away_team"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toEndOf="@+id/Home_team"
+        app:layout_constraintTop_toBottomOf="@+id/Deporte"
+        app:layout_constraintVertical_bias="0.974" />
 
     <TextView
         android:id="@+id/Away_team"
@@ -60,8 +58,8 @@
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/Price2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toEndOf="@+id/Home_team" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/Price1"
@@ -69,9 +67,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="36dp"
-        android:text="@string/cuota1"
         android:textAlignment="textStart"
-        android:textColor="#FFEB3B"
+        android:textColor="@color/white"
+        android:backgroundTint="#FFC107"
+        android:text="@string/cuota1"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/PriceX"
@@ -82,26 +81,28 @@
         android:id="@+id/PriceX"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
         android:layout_marginBottom="36dp"
         android:text="@string/cuotax"
-        android:textColor="#FFEB3B"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/Price2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/Price2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
         android:layout_marginBottom="36dp"
         android:text="@string/cuota2"
-        android:textColor="#FFEB3B"
+        android:textColor="@color/white"
+        android:backgroundTint="#FF5722"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.793"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/PriceX" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

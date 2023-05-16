@@ -129,8 +129,6 @@ public class Banco extends AppCompatActivity {
         txtRetirar.setVisibility(View.INVISIBLE);
 
 
-
-
         if(rbVersaldo != null && rbVersaldo.isChecked()){
             tvVerSaldo.setText("Tu saldo actual es de: "+saldoFinal);
         }

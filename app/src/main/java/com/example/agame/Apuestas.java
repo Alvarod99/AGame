@@ -14,10 +14,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
+
 public class Apuestas extends AppCompatActivity {
 
     private EditText txtStaticImporte, txtStaticGanancias, txtImporte, txtGanancias;
     private Button aceptar;
+
+    Double saldoFinal;
+
+    //Firebase
+    FirebaseUser user;
+    FirebaseAuth firebaseAuth;
+    DatabaseReference BASE_DE_DATOS;
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
@@ -34,12 +48,35 @@ public class Apuestas extends AppCompatActivity {
         txtGanancias = findViewById(R.id.Ganancias);
         aceptar = findViewById(R.id.aceptar);
 
+        BASE_DE_DATOS.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()) {
+                    String Saldo = ""+ snapshot.child("Saldo").getValue();
+                    saldoFinal = Double.parseDouble(Saldo);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         aceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Apuestas.this, today.class);
             }
         });
+
+    }
+
+    public void botonAceptar(View view){
+        //Si tiene esa cantidad ingresada en la app, se le permite apostar, sino no
+
+
 
     }
 
