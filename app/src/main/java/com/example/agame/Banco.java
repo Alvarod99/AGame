@@ -23,9 +23,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.ktx.Firebase;
-
-import java.util.HashMap;
 
 public class Banco extends AppCompatActivity {
     //Datos del xml
@@ -44,8 +41,7 @@ public class Banco extends AppCompatActivity {
     //Botón
     private Button btnAceptar;
 
-    //Llevar cuanta del saldo
-    double saldoFinal;
+    double saldoFinal; //Llevar cuenta del saldo
 
     //Firebase
     FirebaseUser user;
@@ -166,15 +162,15 @@ public class Banco extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem opcion_menu) {
         if (opcion_menu.getItemId() == R.id.action_profile) {
-            Intent j = new Intent(Banco.this, profile.class);
+            Intent j = new Intent(Banco.this, Profile.class);
             startActivity(j);
         }
         if (opcion_menu.getItemId() == R.id.hoy) {
-            Intent i = new Intent(Banco.this, today.class);
+            Intent i = new Intent(Banco.this, Today.class);
             startActivity(i);
         }
         if (opcion_menu.getItemId() == R.id.Partidos) {
-            Intent m = new Intent(Banco.this, matches.class);
+            Intent m = new Intent(Banco.this, Matches.class);
             startActivity(m);
         }
         if (opcion_menu.getItemId() == R.id.transferencias) {

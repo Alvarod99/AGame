@@ -15,21 +15,30 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.agame.models.ApuestaUsuario;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 
 public class Apuestas extends AppCompatActivity {
 
-    private EditText txtImporte;
-    private TextView txtGanancias,txtStaticGanancias,txtStaticImporte;
+    private EditText ETImporte;
+    private TextView txtGanancias,txtStaticGanancias,txtStaticImporte, txtSaldo;
     private Button aceptar;
+    String id;
+    private double saldoFinal;
+    private double apostar;
+    private double posibleApuesta;
+    private Double Cuota;
+    private String idPartido;
+    private String Resultado;
 
-    Double saldoFinal;
-    Double Cuota;
 
     //Firebase
     FirebaseUser user;
@@ -47,20 +56,33 @@ public class Apuestas extends AppCompatActivity {
 
         txtStaticImporte = findViewById(R.id.staticImporte);
         txtStaticGanancias = findViewById(R.id.staticGanancias);
-        txtImporte = findViewById(R.id.Importe);
+        ETImporte = findViewById(R.id.Importe);
         txtGanancias = findViewById(R.id.Ganancias);
         aceptar = findViewById(R.id.aceptar);
+        txtSaldo = findViewById(R.id.Saldo);
 
         Intent i = getIntent();
         Cuota = i.getExtras().getDouble("Cuota");
-        txtGanancias.setText(Cuota.toString());
+        idPartido = i.getExtras().getString("id");
+        Resultado = i.getExtras().getString("Resultado");
 
-        /*BASE_DE_DATOS.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+
+        txtGanancias.setText(Cuota.toString()+"€");//de este modo pondremos cuanto ganaría apostando txtImporte
+
+        //Firebase
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
+        BASE_DE_DATOS = FirebaseDatabase.getInstance().getReference("Usuarios_de_app");
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+
+        BASE_DE_DATOS.child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()) {
                     String Saldo = ""+ snapshot.child("Saldo").getValue();
-                    saldoFinal = Double.parseDouble(Saldo);
+                    saldoFinal = Double.parseDouble(Saldo);//meto en saldoFinal el Saldo de Firebase
+                    txtSaldo.setText("Tu saldo es de: "+saldoFinal);
 
                 }
             }
@@ -69,35 +91,61 @@ public class Apuestas extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });*/
-
-        aceptar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                botonAceptar(view);
-            }
         });
-
     }
 
-    public void botonAceptar(View view){
-        //Si tiene esa cantidad ingresada en la app, se le permite apostar, sino no
-        Intent i = new Intent(Apuestas.this, today.class);
-        startActivity(i);
 
+    public void verGanancias(View view){
+        posibleApuesta = Double.parseDouble(ETImporte.getText().toString());
+        if((saldoFinal-posibleApuesta)>0.0) {
+            double apostado = Cuota * posibleApuesta;
+            txtGanancias.setText(Double.toString(apostado)+"€");//de este modo pondremos cuanto ganaría apostando txtImporte
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void botonAceptarApuesta(View view){
+        //Si tiene esa cantidad ingresada en la app, se le permite apostar, sino no
+        apostar = Double.parseDouble(ETImporte.getText().toString());
+        if((saldoFinal - apostar) < 0.0) {
+            txtSaldo.setText("Está intentando apostar más dinero del que tiene ingresado");
+        }else{
+            saldoFinal = saldoFinal - apostar;
+            double ganancias = Cuota * apostar;
+            txtGanancias.setText(Double.toString(ganancias));//de este modo pondremos cuanto ganaría apostando txtImporte
+            Toast.makeText(this, "Su apuesta se ha realizado exitosamente", Toast.LENGTH_LONG).show();
+
+
+            ApuestaUsuario apuesta = new ApuestaUsuario(id, idPartido, ganancias,Cuota, Resultado);
+            BASE_DE_DATOS.child(firebaseAuth.getCurrentUser().getUid()).child("Apuestas").push().setValue(apuesta);
+
+
+            //inicializamos la instancia a la base de datos de firebase
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            //creamos la BD
+            DatabaseReference reference = database.getReference("Usuarios_de_app");
+
+        }
+
+        String saldo = String.valueOf(saldoFinal);
+        String id = user.getUid();
+
+        //Firebase
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.child("Usuarios_de_app").child(id).child("Saldo").setValue(saldo);
     }
 
     public boolean onOptionsItemSelected(@NonNull MenuItem opcion_menu) {
         if (opcion_menu.getItemId() == R.id.action_profile) {
-            Intent j = new Intent(Apuestas.this, profile.class);
+            Intent j = new Intent(Apuestas.this, Profile.class);
             startActivity(j);
         }
         if (opcion_menu.getItemId() == R.id.hoy) {
-            Intent i = new Intent(Apuestas.this, today.class);
+            Intent i = new Intent(Apuestas.this, Today.class);
             startActivity(i);
         }
         if (opcion_menu.getItemId() == R.id.Partidos) {
-            Intent m = new Intent(Apuestas.this, matches.class);
+            Intent m = new Intent(Apuestas.this, Matches.class);
             startActivity(m);
         }
         if (opcion_menu.getItemId() == R.id.transferencias) {

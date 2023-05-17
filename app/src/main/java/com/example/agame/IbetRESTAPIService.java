@@ -13,7 +13,7 @@ public interface IbetRESTAPIService {
     Call<List<Sport>>getSports();
     @GET("/v4/sports/upcoming/odds/?regions=eu&markets=h2h&apiKey=4ddd3c70740b3bbb6f6ad30cab32d2dc")
     Call<List<Event>>getUpcomingEvents();
-    @GET("/odds/?regions=eu&markets=h2h&apiKey=4ddd3c70740b3bbb6f6ad30cab32d2dc")
+    @GET("odds/?regions=eu&markets=h2h&apiKey=4ddd3c70740b3bbb6f6ad30cab32d2dc")
     Call<List<Event>>getSportByEvents();
 }
 

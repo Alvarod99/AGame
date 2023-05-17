@@ -22,9 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.checkerframework.common.subtyping.qual.Bottom;
-
-public class profile extends AppCompatActivity {
+public class Profile extends AppCompatActivity {
 
     TextView UnameTxt, Uname, UsurnameTXT, Usurname, UmailTXT, Umail, UdateTXT, Udate;
     Button CerrarSesion, actualizarContrasena;
@@ -105,7 +103,7 @@ public class profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Nos enviará a la activity_cambiar_contrasena
-                Intent i= new Intent(profile.this,CambiarContrasena.class);
+                Intent i= new Intent(Profile.this,CambiarContrasena.class);
                 startActivity(i);
             }
         });
@@ -116,7 +114,7 @@ public class profile extends AppCompatActivity {
     private void cerrarsesion(){
         firebaseAuth.signOut();
         Toast.makeText(this, "Se ha cerrado sesión", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(profile.this,LoginActivity.class));
+        startActivity(new Intent(Profile.this,LoginActivity.class));
     }
 
     protected void onStart(){
@@ -126,7 +124,7 @@ public class profile extends AppCompatActivity {
 
     private void verificacionSesion(){
         if(user == null){
-            startActivity(new Intent(profile.this,MenuActivity.class));
+            startActivity(new Intent(Profile.this,MenuActivity.class));
             finish();
         }
 
@@ -137,15 +135,15 @@ public class profile extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem opcion_menu) {
         if (opcion_menu.getItemId() == R.id.hoy) {
-            Intent i = new Intent(profile.this, today.class);
+            Intent i = new Intent(Profile.this, Today.class);
             startActivity(i);
         }
         if (opcion_menu.getItemId() == R.id.Partidos) {
-            Intent m = new Intent(profile.this, matches.class);
+            Intent m = new Intent(Profile.this, Matches.class);
             startActivity(m);
         }
         if (opcion_menu.getItemId() == R.id.transferencias) {
-            Intent n = new Intent(profile.this, GirarPantalla.class);
+            Intent n = new Intent(Profile.this, GirarPantalla.class);
             startActivity(n);
         }
         return super.onOptionsItemSelected(opcion_menu);

@@ -24,15 +24,15 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem opcion_menu) {
         if (opcion_menu.getItemId() == R.id.action_profile) {
-            Intent j = new Intent(MenuActivity.this, profile.class);
+            Intent j = new Intent(MenuActivity.this, Profile.class);
             startActivity(j);
         }
         if (opcion_menu.getItemId() == R.id.hoy) {
-            Intent i = new Intent(MenuActivity.this, today.class);
+            Intent i = new Intent(MenuActivity.this, Today.class);
             startActivity(i);
         }
         if (opcion_menu.getItemId() == R.id.Partidos) {
-            Intent m = new Intent(MenuActivity.this, matches.class);
+            Intent m = new Intent(MenuActivity.this, Matches.class);
             startActivity(m);
         }
         if (opcion_menu.getItemId() == R.id.transferencias) {

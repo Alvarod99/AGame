@@ -3,15 +3,11 @@ package com.example.agame;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,14 +28,13 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class today extends AppCompatActivity{
+public class Today extends AppCompatActivity{
     private static final String API_BASE_URL = "https://api.the-odds-api.com";
     Button price1, price2, priceX;
     private IbetRESTAPIService apiService;
     private String key;
 
     private ListView listView;
-    List<RowPartidos> RowPartidos;
     ArrayAdapter<RowPartidos> adapter;
     List<RowPartidos> rowPartidos;
 
@@ -63,7 +58,6 @@ public class today extends AppCompatActivity{
 
         apiService = retrofit.create(IbetRESTAPIService.class);
         rowPartidos = new ArrayList<RowPartidos>();
-
 
         listView = (ListView) findViewById(R.id.listView);
         adapter = new RowArrayAdapter(this, R.layout.rowpartidos, rowPartidos);
@@ -91,14 +85,14 @@ public class today extends AppCompatActivity{
                                         List<Outcome> outcomes = market.getOutcomes();
                                         if (outcomes.size() < 3) {
                                             RowPartidos item = new RowPartidos(event.getSport_title(), event.getHome_team(),
-                                                    event.getAway_team(), outcomes.get(0).getPrice(), outcomes.get(1).getPrice(), 0.0);
+                                                    event.getAway_team(),event.getId(), outcomes.get(0).getPrice(), outcomes.get(1).getPrice(), 0.0);
                                             rowPartidos.add(item);
                                             adapter.notifyDataSetChanged();
 
                                         } else {
 
                                             RowPartidos item = new RowPartidos(event.getSport_title(), event.getHome_team(),
-                                                    event.getAway_team(), outcomes.get(0).getPrice(), outcomes.get(1).getPrice(), outcomes.get(2).getPrice());
+                                                    event.getAway_team(), event.getId(),outcomes.get(0).getPrice(), outcomes.get(1).getPrice(), outcomes.get(2).getPrice());
                                             rowPartidos.add(item);
                                             adapter.notifyDataSetChanged();
 
@@ -133,19 +127,19 @@ public class today extends AppCompatActivity{
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem opcion_menu) {
         if (opcion_menu.getItemId() == R.id.action_profile) {
-            Intent j = new Intent(today.this, profile.class);
+            Intent j = new Intent(Today.this, Profile.class);
             startActivity(j);
         }
         if (opcion_menu.getItemId() == R.id.hoy) {
-            Intent i = new Intent(today.this, today.class);
+            Intent i = new Intent(Today.this, Today.class);
             startActivity(i);
         }
         if (opcion_menu.getItemId() == R.id.Partidos) {
-            Intent m = new Intent(today.this, matches.class);
+            Intent m = new Intent(Today.this, Matches.class);
             startActivity(m);
         }
         if (opcion_menu.getItemId() == R.id.transferencias) {
-            Intent n = new Intent(today.this, GirarPantalla.class);
+            Intent n = new Intent(Today.this, GirarPantalla.class);
             startActivity(n);
         }
         return super.onOptionsItemSelected(opcion_menu);

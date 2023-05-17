@@ -10,16 +10,22 @@ import androidx.appcompat.widget.Toolbar;
 public class RowPartidos {
     private String sport_title, home_team,away_team;
     private Double price1, priceX, price2;
+    String id;
 
     public RowPartidos(String sport_title, String home_team,
-                       String away_team, Double price1, Double price2, Double priceX){
-        this.sport_title =sport_title;
-        this.home_team=home_team;
-        this.away_team =away_team;
-        this.price1 =price1;
-        this.price2 =price2;
-        this.priceX =priceX;
+                       String away_team, String id,Double price1, Double price2, Double priceX){
+        this.sport_title = sport_title;
+        this.home_team = home_team;
+        this.away_team = away_team;
+        this.price1 = price1;
+        this.price2 = price2;
+        this.priceX = priceX;
+        this.id = id;
 
+    }
+
+    public String getId(){
+        return id;
     }
 
     public String getSport_title(){

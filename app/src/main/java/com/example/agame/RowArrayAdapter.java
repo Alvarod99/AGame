@@ -58,6 +58,8 @@ public class RowArrayAdapter extends ArrayAdapter<RowPartidos> {
             public void onClick(View view) {
                 Intent i = new Intent(view.getContext(),Apuestas.class);
                 i.putExtra("Cuota",RowPartidos.getPrice1());
+                i.putExtra("id",RowPartidos.getId());
+                i.putExtra("Resultado","1");
                 view.getContext().startActivity(i);
 
             }
@@ -68,6 +70,8 @@ public class RowArrayAdapter extends ArrayAdapter<RowPartidos> {
             public void onClick(View view) {
                 Intent i = new Intent(view.getContext(),Apuestas.class);
                 i.putExtra("Cuota",RowPartidos.getPrice2());
+                i.putExtra("id",RowPartidos.getId());
+                i.putExtra("Resultado","2");
                 view.getContext().startActivity(i);
             }
         });
@@ -77,6 +81,8 @@ public class RowArrayAdapter extends ArrayAdapter<RowPartidos> {
             public void onClick(View view) {
                 Intent i = new Intent(view.getContext(),Apuestas.class);
                 i.putExtra("Cuota",RowPartidos.getPriceX());
+                i.putExtra("id",RowPartidos.getId());
+                i.putExtra("Resultado","X");
                 view.getContext().startActivity(i);
             }
         });

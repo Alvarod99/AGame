@@ -59,6 +59,8 @@
     <string name="pr_ximos_eventos">Próximos eventos</string>
     <string name="estos_son_nuestros_eventos_de_los_pr_ximos_8_d_as">¡Estos son nuestros eventos de los próximos 8 días!</string>
     <string name="estos_son_nuestros_pr_ximos_8_eventos">Estos son nuestros próximos 8 eventos</string>
+    <string name="ver_ganancias">Ver ganancias</string>
+    <string name="introduza_cantidad">Introduza cantidad</string>
 
 
 </resources>

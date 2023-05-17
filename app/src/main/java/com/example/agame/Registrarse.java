@@ -160,7 +160,7 @@ public class Registrarse extends AppCompatActivity {
                             reference.child(id).setValue(datosUsuario);
                             Toast.makeText(Registrarse.this, "El registro se ha realizado correctamente", Toast.LENGTH_SHORT).show();
                             //Una vez registrado, vamos a activity_menu
-                            startActivity(new Intent(Registrarse.this, MenuActivity.class));
+                            startActivity(new Intent(Registrarse.this, LoginActivity.class));
 
                         } else {
                             Toast.makeText(Registrarse.this, "Ha ocurrido  un error al registrarse", Toast.LENGTH_SHORT).show();
