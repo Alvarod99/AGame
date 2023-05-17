@@ -27,6 +27,7 @@ public class matches extends AppCompatActivity {
         Spinner = findViewById(R.id.spinner);
 
         String [] lista = {"Seleccionar deporte", "Fútbol", "Baloncesto", "Tenis"};
+        //Spinner.getSelectedItem().toString();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,lista);
         Spinner.setAdapter(adapter);
 

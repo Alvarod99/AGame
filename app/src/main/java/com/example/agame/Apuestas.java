@@ -29,6 +29,7 @@ public class Apuestas extends AppCompatActivity {
     private Button aceptar;
 
     Double saldoFinal;
+    Double Cuota;
 
     //Firebase
     FirebaseUser user;
@@ -50,6 +51,10 @@ public class Apuestas extends AppCompatActivity {
         txtGanancias = findViewById(R.id.Ganancias);
         aceptar = findViewById(R.id.aceptar);
 
+        Intent i = getIntent();
+        Cuota = i.getExtras().getDouble("Cuota");
+        txtGanancias.setText(Cuota.toString());
+
         /*BASE_DE_DATOS.child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -69,7 +74,7 @@ public class Apuestas extends AppCompatActivity {
         aceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Apuestas.this, today.class);
+                botonAceptar(view);
             }
         });
 
@@ -77,8 +82,8 @@ public class Apuestas extends AppCompatActivity {
 
     public void botonAceptar(View view){
         //Si tiene esa cantidad ingresada en la app, se le permite apostar, sino no
-
-
+        Intent i = new Intent(Apuestas.this, today.class);
+        startActivity(i);
 
     }
 

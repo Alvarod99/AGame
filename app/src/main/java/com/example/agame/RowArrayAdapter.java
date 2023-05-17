@@ -3,6 +3,7 @@ package com.example.agame;
 import java.util.List;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,33 @@ public class RowArrayAdapter extends ArrayAdapter<RowPartidos> {
         holder.BtPrice2.setText(RowPartidos.getPrice2().toString());
         holder.BtPriceX.setText(RowPartidos.getPriceX().toString());
 
+        holder.BtPrice1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(view.getContext(),Apuestas.class);
+                i.putExtra("Cuota",RowPartidos.getPrice1());
+                view.getContext().startActivity(i);
+
+            }
+        });
+
+        holder.BtPrice2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(view.getContext(),Apuestas.class);
+                i.putExtra("Cuota",RowPartidos.getPrice2());
+                view.getContext().startActivity(i);
+            }
+        });
+
+        holder.BtPriceX.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(view.getContext(),Apuestas.class);
+                i.putExtra("Cuota",RowPartidos.getPriceX());
+                view.getContext().startActivity(i);
+            }
+        });
 
 
         return convertView;

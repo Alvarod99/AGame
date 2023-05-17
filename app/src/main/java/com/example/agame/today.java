@@ -36,6 +36,7 @@ public class today extends AppCompatActivity{
     private static final String API_BASE_URL = "https://api.the-odds-api.com";
     Button price1, price2, priceX;
     private IbetRESTAPIService apiService;
+    private String key;
 
     private ListView listView;
     List<RowPartidos> RowPartidos;
@@ -54,13 +55,6 @@ public class today extends AppCompatActivity{
         price2 = findViewById(R.id.Price2);
         priceX = findViewById(R.id.PriceX);
 
-        /*price1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(today.this,Apuestas.class);
-                startActivity(i);
-            }
-        });*/
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(API_BASE_URL)
@@ -76,27 +70,9 @@ public class today extends AppCompatActivity{
         listView.setAdapter(adapter);
         this.getEvent();
 
-/*
-        price2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(today.this,Apuestas.class);
-                startActivity(i);
-            }
-        });
-
-        priceX.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(today.this,Apuestas.class);
-                startActivity(i);
-            }
-        });*/
-
     }
 
     public void getEvent(){
-        //Toast.makeText(today.this, "aqui", Toast.LENGTH_LONG).show();
         Call<List<Event>> call = apiService.getUpcomingEvents();
 
 
