@@ -38,9 +38,6 @@ public class Banco extends AppCompatActivity {
     private EditText txtIngresar = null;
     private EditText txtRetirar = null;
 
-    //Botón
-    private Button btnAceptar;
-
     double saldoFinal; //Llevar cuenta del saldo
 
     //Firebase
@@ -62,7 +59,6 @@ public class Banco extends AppCompatActivity {
         rbVersaldo=findViewById(R.id.btnVersaldo);
         rbIngresar=findViewById(R.id.btnIngresar);
         rbRetirar=findViewById(R.id.btnRetirar);
-        btnAceptar=findViewById(R.id.btnAceptar);
 
         //TextView
         tvVerSaldo=findViewById(R.id.tvVerSaldo);
@@ -89,7 +85,6 @@ public class Banco extends AppCompatActivity {
 
             }
         });
-
 
     }
 

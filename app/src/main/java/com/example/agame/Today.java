@@ -120,8 +120,6 @@ public class Today extends AppCompatActivity{
             }
     });
 
-
-
 }
 
     @Override

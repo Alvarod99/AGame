@@ -34,12 +34,12 @@ public class RowArrayAdapter extends ArrayAdapter<RowPartidos> {
             convertView = mInflater.inflate(R.layout.rowpartidos,null);
             holder = new RowItemHolder();
 
-            holder.txtSport_title = (TextView) convertView.findViewById(R.id.Deporte);//no se si es este sport_title
-            holder.txtHome_team = (TextView) convertView.findViewById(R.id.Home_team);//no se si es este home_team
-            holder.txtAway_team = (TextView) convertView.findViewById(R.id.Away_team);//no se si es este away_team
-            holder.BtPrice1 = (Button) convertView.findViewById(R.id.Price1);//no se si es este price1
-            holder.BtPrice2 = (Button) convertView.findViewById(R.id.Price2);//no se si es este price2
-            holder.BtPriceX = (Button) convertView.findViewById(R.id.PriceX);//no se si es este priceX
+            holder.txtSport_title = (TextView) convertView.findViewById(R.id.Deporte);
+            holder.txtHome_team = (TextView) convertView.findViewById(R.id.Home_team);
+            holder.txtAway_team = (TextView) convertView.findViewById(R.id.Away_team);
+            holder.BtPrice1 = (Button) convertView.findViewById(R.id.Price1);
+            holder.BtPrice2 = (Button) convertView.findViewById(R.id.Price2);
+            holder.BtPriceX = (Button) convertView.findViewById(R.id.PriceX);
             convertView.setTag(holder);
         }
         else
@@ -86,7 +86,6 @@ public class RowArrayAdapter extends ArrayAdapter<RowPartidos> {
                 view.getContext().startActivity(i);
             }
         });
-
 
         return convertView;
 

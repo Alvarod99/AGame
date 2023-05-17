@@ -55,10 +55,7 @@ public class Matches extends AppCompatActivity {
         price2 = findViewById(R.id.Price2);
         priceX = findViewById(R.id.PriceX);
 
-        /*Aqui creo 2 apiService ya que vamos a necesitar recuperar todos
-        los deportes de la api primero y luego recuperar
-         los eventos de ese deporte con sus cuotas*/
-
+        //Esta es la API para acceder a todos los deportes
         Retrofit retrofit1 = new Retrofit.Builder()
                 .baseUrl(API_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -68,7 +65,6 @@ public class Matches extends AppCompatActivity {
 
 
         Spinner = findViewById(R.id.spinner);
-
         String [] lista = {"Seleccionar deporte", "American football" , "Baseball", "Basketball", "Cricket", "Ice Hockey" , "Rugby", "Soccer"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,lista);
         Spinner.setAdapter(adapter);
@@ -80,16 +76,14 @@ public class Matches extends AppCompatActivity {
         List<String> sportKey = new ArrayList<>();
         Call<List<Sport>> call = apiServiceSport.getSports();
         sportGroup = Spinner.getSelectedItem().toString();
-        Toast.makeText(this, sportGroup, Toast.LENGTH_SHORT).show();
         call.enqueue( new Callback<List<Sport>>(){
             @Override
-            public void onResponse(Call<List<Sport>> call, Response<List<Sport>> response) {
+            public void onResponse(Call<List<Sport>> call, Response<List<Sport>> response){
                 List<Sport> sportList = response.body();
                 for( Sport sport : sportList){
                     if(sport.getGroup().equals(sportGroup)){
                         sportKey.add(sport.getKey());
                     }
-
                 }
                 for (String key : sportKey){
                     sportsByEvent(key);
@@ -108,6 +102,7 @@ public class Matches extends AppCompatActivity {
     }
 
     public void sportsByEvent(String key){
+        //Esta es la API para traernos todos los eventos filtrados por deporte
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(API_BASE_URL + "/v4/sports/" + key + "/")
                 .addConverterFactory(GsonConverterFactory.create())

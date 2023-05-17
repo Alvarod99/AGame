@@ -87,7 +87,6 @@ public class Registrarse extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 //Calcular edad
-                //Calendar fechaNac = Calendar.getInstance();
                 if(fechaNacimiento != null) {
                     Calendar fechaNac = Calendar.getInstance();
                     fechaNac.setTime(fechaNacimiento);

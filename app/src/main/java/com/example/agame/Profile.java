@@ -124,10 +124,9 @@ public class Profile extends AppCompatActivity {
 
     private void verificacionSesion(){
         if(user == null){
-            startActivity(new Intent(Profile.this,MenuActivity.class));
+            startActivity(new Intent(Profile.this,Today.class));
             finish();
         }
-
     }
 
 
@@ -156,11 +155,4 @@ public class Profile extends AppCompatActivity {
         return true;
     }
 
-
-    /*para volver a la activity anterior (no funciona todavía)
-    public boolean anterior(){
-        onBackPressed();
-
-        return super.onSupportNavigateUp();
-    }*/
 }

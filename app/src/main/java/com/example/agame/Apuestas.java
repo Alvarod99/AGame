@@ -29,8 +29,7 @@ import java.util.HashMap;
 public class Apuestas extends AppCompatActivity {
 
     private EditText ETImporte;
-    private TextView txtGanancias,txtStaticGanancias,txtStaticImporte, txtSaldo;
-    private Button aceptar;
+    private TextView txtGanancias, txtSaldo;
     String id;
     private double saldoFinal;
     private double apostar;
@@ -54,11 +53,9 @@ public class Apuestas extends AppCompatActivity {
         Toolbar myToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
 
-        txtStaticImporte = findViewById(R.id.staticImporte);
-        txtStaticGanancias = findViewById(R.id.staticGanancias);
+
         ETImporte = findViewById(R.id.Importe);
         txtGanancias = findViewById(R.id.Ganancias);
-        aceptar = findViewById(R.id.aceptar);
         txtSaldo = findViewById(R.id.Saldo);
 
         Intent i = getIntent();
@@ -99,7 +96,7 @@ public class Apuestas extends AppCompatActivity {
         posibleApuesta = Double.parseDouble(ETImporte.getText().toString());
         if((saldoFinal-posibleApuesta)>0.0) {
             double apostado = Cuota * posibleApuesta;
-            txtGanancias.setText(Double.toString(apostado)+"€");//de este modo pondremos cuanto ganaría apostando txtImporte
+            txtGanancias.setText(apostado +"€");//de este modo pondremos cuanto ganaría apostando txtImporte
         }
     }
 
@@ -109,7 +106,10 @@ public class Apuestas extends AppCompatActivity {
         apostar = Double.parseDouble(ETImporte.getText().toString());
         if((saldoFinal - apostar) < 0.0) {
             txtSaldo.setText("Está intentando apostar más dinero del que tiene ingresado");
-        }else{
+        }
+        else if(Cuota == 0.0){//Cuando hay empate y no existe esa cuota
+            Toast.makeText(this, "No es posible realizar apuesta con esta cuota", Toast.LENGTH_SHORT).show();
+        } else{
             saldoFinal = saldoFinal - apostar;
             double ganancias = Cuota * apostar;
             txtGanancias.setText(Double.toString(ganancias));//de este modo pondremos cuanto ganaría apostando txtImporte
@@ -118,12 +118,6 @@ public class Apuestas extends AppCompatActivity {
 
             ApuestaUsuario apuesta = new ApuestaUsuario(id, idPartido, ganancias,Cuota, Resultado);
             BASE_DE_DATOS.child(firebaseAuth.getCurrentUser().getUid()).child("Apuestas").push().setValue(apuesta);
-
-
-            //inicializamos la instancia a la base de datos de firebase
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            //creamos la BD
-            DatabaseReference reference = database.getReference("Usuarios_de_app");
 
         }
 

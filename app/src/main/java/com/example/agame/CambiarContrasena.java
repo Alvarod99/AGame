@@ -73,7 +73,6 @@ public class CambiarContrasena extends AppCompatActivity {
 
                     //Seteamos datos en los TextView
                     correoActual.setText(Correo);
-
                 }
             }
 
